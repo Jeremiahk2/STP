@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.stp.model.tests;
 
+import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
+
 /**
  * Class that contains the information about each individual test case including the testCaseId,
  * testType, testDescription, expectedResults, and Ilog of TestResults
@@ -24,11 +26,14 @@ public class TestCase {
 	private TestPlan testPlan;
 	
 	public TestCase(String testCaseId, String testType, String testDescription, String expectedResults) {
-		
+		setTestCaseId(testCaseId);
+		setTestType(testType);
+		setTestDescription(testDescription);
+		setExpectedResults(expectedResults);
 	}
 	
 	public String getTestCaseId() {
-		return null;
+		return testCaseId;
 	}
 	
 	private void setTestCaseId(String testCaseId) {
@@ -36,7 +41,7 @@ public class TestCase {
 	}
 	
 	public String getTestType() {
-		return null;
+		return testType;
 	}
 	
 	private void setTestType(String testType) {
@@ -44,7 +49,7 @@ public class TestCase {
 	}
 	
 	public String getTestDescription() {
-		return null;
+		return testDescription;
 	}
 	
 	private void setTestDescription(String testDescription) {
@@ -52,7 +57,7 @@ public class TestCase {
 	}
 	
 	public String getExcpetedResults() {
-		return null;
+		return expectedResults;
 	}
 	
  	private void setExpectedResults(String expectedResults) {
@@ -76,7 +81,7 @@ public class TestCase {
  	}
  	
  	public TestPlan getTestPlan() {
- 		return null;
+ 		return testPlan;
  	}
  	
  	public String toString() {

@@ -12,7 +12,8 @@ package edu.ncsu.csc216.stp.model.tests;
 public class TestResult {
 
 	public TestResult(boolean passing, String actualResults) {
-		
+		setPassing(passing);
+		setActualResults(actualResults);
 	}
 	
 	private void setActualResults(String actualResults) {
