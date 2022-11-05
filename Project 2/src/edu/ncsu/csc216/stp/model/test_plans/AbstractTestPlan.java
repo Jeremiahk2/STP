@@ -9,6 +9,9 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
 
 /**
+ * Abstract class for different kinds of TestPlans.
+ * Main functionality is in managing it's list of TestCases, as well as providing access
+ * to the TestCase's methods. Maintains a name for comparison to other classes that extend this one.
  * @author Jeremiah Knizley
  * @author Ryan McPhee
  *
