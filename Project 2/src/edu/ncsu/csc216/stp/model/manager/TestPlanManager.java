@@ -6,7 +6,12 @@ package edu.ncsu.csc216.stp.model.manager;
 import java.io.File;
 
 import edu.ncsu.csc216.stp.model.test_plans.AbstractTestPlan;
+import edu.ncsu.csc216.stp.model.test_plans.FailingTestList;
+import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.tests.TestResult;
+import edu.ncsu.csc216.stp.model.util.ILog;
+import edu.ncsu.csc216.stp.model.util.ISortedList;
 
 /**
  * @author Ryan McPhee
@@ -14,7 +19,14 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
  */
 public class TestPlanManager {
 
+	private ISortedList<TestPlan> testPlans;
+	
+	private FailingTestList failingTestList;
+	
+	private AbstractTestPlan currentTestPlan;
+	
 	private boolean isChanged;
+	
 	
 	public TestPlanManager() {
 		
@@ -71,10 +83,6 @@ public class TestPlanManager {
 	public void clearTestPlans() {
 		
 	}
-	
-	public String getExpectedResults() {
-		
-		return null;
-	}
+
 	
 }
