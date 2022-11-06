@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.stp.model.manager;
 
+import java.io.File;
+
 import edu.ncsu.csc216.stp.model.test_plans.AbstractTestPlan;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
 
@@ -18,11 +20,11 @@ public class TestPlanManager {
 		
 	}
 	
-	public void loadTestPlans(String fileName) {
+	public void loadTestPlans(File inputFile) {
 		
 	}
 	
-	public void saveTestPlans(String fileName) {
+	public void saveTestPlans(File outputFile) {
 		
 	}
 	
@@ -68,6 +70,11 @@ public class TestPlanManager {
 	
 	public void clearTestPlans() {
 		
+	}
+	
+	public String getExpectedResults() {
+		
+		return null;
 	}
 	
 }

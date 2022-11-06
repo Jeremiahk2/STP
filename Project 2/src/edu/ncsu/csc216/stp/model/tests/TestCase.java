@@ -169,6 +169,11 @@ public class TestCase {
  		return testPlan;
  	}
  	
+ 	public String getExpectedResults() {
+		
+		return null;
+	}
+ 	
  	/**
  	 * returns a string representation of the TestCase, specifically for printing to a file.
  	 * @return String the string representation of the TestCase

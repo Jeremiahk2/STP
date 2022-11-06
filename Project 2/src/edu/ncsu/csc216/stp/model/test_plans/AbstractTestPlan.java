@@ -43,6 +43,11 @@ public abstract class AbstractTestPlan {
 		//IAE should have the message "Invalid name."
 	}
 	
+	public String getTestPlanName() {
+		
+		return null;
+	}
+	
 	/**
 	 * adds the given TestCase to the end of the list. May throw exceptions from TestCase constructor
 	 * @param t the test case to be added to the plan.
@@ -85,6 +90,15 @@ public abstract class AbstractTestPlan {
 	 */
 	public abstract String[][] getTestCasesAsArray();
 
+	public TestCase getTestCase(int idx) {
+		
+		return null;
+	}
+	
+	public ISwapList<TestCase> getTestCases() {
+		
+		return null;
+	}
 	/**
 	 * default override of Object.hashCode()
 	 */
