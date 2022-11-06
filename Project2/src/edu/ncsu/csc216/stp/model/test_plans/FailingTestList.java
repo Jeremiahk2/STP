@@ -22,7 +22,7 @@ public class FailingTestList extends AbstractTestPlan {
 		return null;
 	}
 	
-	public void clearTestCases() {
+	public void clearTests() {
 		
 	}
 }
