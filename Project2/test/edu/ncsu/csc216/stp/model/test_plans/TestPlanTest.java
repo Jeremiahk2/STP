@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestPlanTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.TestPlan#addTestCase(edu.ncsu.csc216.stp.model.tests.TestCase)}.
+	 * Test method for TestPlan.addTestCase
 	 */
 	@Test
 	void testAddTestCase() {
@@ -23,7 +23,7 @@ class TestPlanTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.TestPlan#getTestCasesAsArray()}.
+	 * Test method for TestPlan.getTestCasesAsArray
 	 */
 	@Test
 	void testGetTestCasesAsArray() {
@@ -31,7 +31,7 @@ class TestPlanTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.TestPlan#TestPlan(java.lang.String)}.
+	 * Test method for TestPlan constructor
 	 */
 	@Test
 	void testTestPlan() {
@@ -39,7 +39,7 @@ class TestPlanTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.TestPlan#compareTo(edu.ncsu.csc216.stp.model.test_plans.TestPlan)}.
+	 * Test method for TestPlan.compareTo
 	 */
 	@Test
 	void testCompareTo() {

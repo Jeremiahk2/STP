@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestResultTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestResult#TestResult(boolean, java.lang.String)}.
+	 * Test method for TestResult constructor
 	 */
 	@Test
 	void testTestResult() {
@@ -23,7 +23,7 @@ class TestResultTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestResult#getActualResults()}.
+	 * Test method for TestResult.getActualResults
 	 */
 	@Test
 	void testGetActualResults() {
@@ -31,7 +31,7 @@ class TestResultTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestResult#isPassing()}.
+	 * Test method for TestResult.isPassing
 	 */
 	@Test
 	void testIsPassing() {
@@ -39,7 +39,7 @@ class TestResultTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestResult#toString()}.
+	 * Test method for TestResult.toString
 	 */
 	@Test
 	void testToString() {

@@ -9,8 +9,6 @@ import edu.ncsu.csc216.stp.model.test_plans.AbstractTestPlan;
 import edu.ncsu.csc216.stp.model.test_plans.FailingTestList;
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
-import edu.ncsu.csc216.stp.model.tests.TestResult;
-import edu.ncsu.csc216.stp.model.util.ILog;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
 
 /**

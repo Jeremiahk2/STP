@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestPlanManagerTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#TestPlanManager()}.
+	 * Test method for TestPlanManager's constructor
 	 */
 	@Test
 	void testTestPlanManager() {
@@ -23,7 +23,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#loadTestPlans(java.io.File)}.
+	 * Test method for TestPlanManager.loadTestPlans
 	 */
 	@Test
 	void testLoadTestPlans() {
@@ -31,7 +31,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#saveTestPlans(java.io.File)}.
+	 * Test method for Test method for TestPlanManager.saveTestPlans
 	 */
 	@Test
 	void testSaveTestPlans() {
@@ -39,7 +39,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#isChanged()}.
+	 * Test method for TestPlanManager.isChanged
 	 */
 	@Test
 	void testIsChanged() {
@@ -47,7 +47,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#addTestPlan(java.lang.String)}.
+	 * Test method for TestPlanManager.addTestPlan
 	 */
 	@Test
 	void testAddTestPlan() {
@@ -55,7 +55,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#getTestPlanNames()}.
+	 * Test method for TestPlanManager.getTestPlanNames
 	 */
 	@Test
 	void testGetTestPlanNames() {
@@ -63,7 +63,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#setCurrentTestPlan(java.lang.String)}.
+	 * Test method for TestPlanManager.setCurrentTestPlan
 	 */
 	@Test
 	void testSetCurrentTestPlan() {
@@ -71,7 +71,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#getCurrentTestPlan()}.
+	 * Test method for TestPlanManager.getCurrentTestPlan
 	 */
 	@Test
 	void testGetCurrentTestPlan() {
@@ -79,7 +79,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#editTestPlan(java.lang.String)}.
+	 * Test method for TestPlanManager.editTestPlan
 	 */
 	@Test
 	void testEditTestPlan() {
@@ -87,7 +87,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#removeTestPlan()}.
+	 * Test method for TestPlanManager.removeTestPlan
 	 */
 	@Test
 	void testRemoveTestPlan() {
@@ -95,7 +95,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#addTestCase(edu.ncsu.csc216.stp.model.tests.TestCase)}.
+	 * Test method for TestPlanManager.addTestCase
 	 */
 	@Test
 	void testAddTestCase() {
@@ -103,7 +103,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#addTestResult(int, boolean, java.lang.String)}.
+	 * Test method for TestPlanManager.addTestResult
 	 */
 	@Test
 	void testAddTestResult() {
@@ -111,7 +111,7 @@ class TestPlanManagerTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.manager.TestPlanManager#clearTestPlans()}.
+	 * Test method for TestPlanManager.clearTestPlans
 	 */
 	@Test
 	void testClearTestPlans() {

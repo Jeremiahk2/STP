@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestCaseTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#TestCase(java.lang.String, java.lang.String, java.lang.String, java.lang.String)}.
+	 * Test method for TestCase constructor
 	 */
 	@Test
 	void testTestCase() {
@@ -23,7 +23,7 @@ class TestCaseTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getTestCaseId()}.
+	 * Test method for TestCase.getTestCaseId
 	 */
 	@Test
 	void testGetTestCaseId() {
@@ -31,7 +31,7 @@ class TestCaseTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getTestType()}.
+	 * Test method for TestCase.getTestType
 	 */
 	@Test
 	void testGetTestType() {
@@ -39,7 +39,7 @@ class TestCaseTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getTestDescription()}.
+	 * Test method for TestCase.getTestDescription
 	 */
 	@Test
 	void testGetTestDescription() {
@@ -47,63 +47,7 @@ class TestCaseTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getExcpetedResults()}.
-	 */
-	@Test
-	void testGetExcpetedResults() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#addTestResult(boolean, java.lang.String)}.
-	 */
-	@Test
-	void testAddTestResult() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getStatus()}.
-	 */
-	@Test
-	void testGetStatus() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getActualResultsLog()}.
-	 */
-	@Test
-	void testGetActualResultsLog() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#isTestCasePassing()}.
-	 */
-	@Test
-	void testIsTestCasePassing() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#setTestPlan(edu.ncsu.csc216.stp.model.test_plans.TestPlan)}.
-	 */
-	@Test
-	void testSetTestPlan() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getTestPlan()}.
-	 */
-	@Test
-	void testGetTestPlan() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#getExpectedResults()}.
+	 * Test method for TestCase.getExpectedResults
 	 */
 	@Test
 	void testGetExpectedResults() {
@@ -111,7 +55,55 @@ class TestCaseTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.tests.TestCase#toString()}.
+	 * Test method for TestCase.addTestResult
+	 */
+	@Test
+	void testAddTestResult() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.getStatus
+	 */
+	@Test
+	void testGetStatus() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.getActualResultsLog
+	 */
+	@Test
+	void testGetActualResultsLog() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.isTestCasePassing
+	 */
+	@Test
+	void testIsTestCasePassing() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.setTestPlan
+	 */
+	@Test
+	void testSetTestPlan() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.getTestPlan
+	 */
+	@Test
+	void testGetTestPlan() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for TestCase.toString
 	 */
 	@Test
 	void testToString() {

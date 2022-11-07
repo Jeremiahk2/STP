@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestPlanWriterTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.io.TestPlanWriter#writeTestPlanFile(java.io.File, edu.ncsu.csc216.stp.model.util.ISortedList)}.
+	 * Test method for TestPlanWriter.writeTestPlanFile
 	 */
 	@Test
 	void testWriteTestPlanFile() {

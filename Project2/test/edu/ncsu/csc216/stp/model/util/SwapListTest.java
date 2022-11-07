@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class SwapListTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#SwapList()}.
+	 * Test method for SwapList constructor
 	 */
 	@Test
 	void testSwapList() {
@@ -23,7 +23,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#add(java.lang.Object)}.
+	 * Test method for SwapList.add
 	 */
 	@Test
 	void testAdd() {
@@ -31,7 +31,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#remove(int)}.
+	 * Test method for SwapList.remove
 	 */
 	@Test
 	void testRemove() {
@@ -39,7 +39,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#moveUp(int)}.
+	 * Test method for SwapList.moveUp
 	 */
 	@Test
 	void testMoveUp() {
@@ -47,7 +47,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#moveDown(int)}.
+	 * Test method for SwapList.moveDown
 	 */
 	@Test
 	void testMoveDown() {
@@ -55,7 +55,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#moveToFront(int)}.
+	 * Test method for SwapList.moveToFront
 	 */
 	@Test
 	void testMoveToFront() {
@@ -63,7 +63,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#moveToBack(int)}.
+	 * Test method for SwapList.moveToBack
 	 */
 	@Test
 	void testMoveToBack() {
@@ -71,7 +71,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#get(int)}.
+	 * Test method for SwapList.get
 	 */
 	@Test
 	void testGet() {
@@ -79,7 +79,7 @@ class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SwapList#size()}.
+	 * Test method for SwapList.size
 	 */
 	@Test
 	void testSize() {

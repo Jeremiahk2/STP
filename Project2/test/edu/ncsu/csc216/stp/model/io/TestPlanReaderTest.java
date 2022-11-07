@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class TestPlanReaderTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.io.TestPlanReader#readTestPlansFile(java.io.File)}.
+	 * Test method for TestPlanReader.readTestPlansFile
 	 */
 	@Test
 	void testReadTestPlansFile() {

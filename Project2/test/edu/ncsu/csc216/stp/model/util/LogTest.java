@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class LogTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.Log#Log()}.
+	 * Test method for Log constructor
 	 */
 	@Test
 	void testLog() {
@@ -23,7 +23,7 @@ class LogTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.Log#add(java.lang.Object)}.
+	 * Test method for Log.add
 	 */
 	@Test
 	void testAdd() {
@@ -31,7 +31,7 @@ class LogTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.Log#get(int)}.
+	 * Test method for Log.get
 	 */
 	@Test
 	void testGet() {
@@ -39,7 +39,7 @@ class LogTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.Log#size()}.
+	 * Test method for Log.size
 	 */
 	@Test
 	void testSize() {

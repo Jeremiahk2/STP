@@ -97,14 +97,6 @@ public class TestCase {
 	}
 	
 	/**
-	 * returns the expectedResults
-	 * @return the expectedResults
-	 */
-	public String getExcpetedResults() {
-		return expectedResults;
-	}
-	
-	/**
 	 * sets the expectedResults, musn't be null or an empty string
 	 * @param expectedResults the expected results of the test case
 	 * @throws IllegalArgumentException if expectedResults is null or an empty string

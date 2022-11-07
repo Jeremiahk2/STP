@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class SortedListTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#SortedList()}.
+	 * Test method for SortedList constructor
 	 */
 	@Test
 	void testSortedList() {
@@ -23,7 +23,7 @@ class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#add(java.lang.Comparable)}.
+	 * Test method for SortedList.add
 	 */
 	@Test
 	void testAdd() {
@@ -31,7 +31,7 @@ class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#remove(int)}.
+	 * Test method for SortedList.remove
 	 */
 	@Test
 	void testRemove() {
@@ -39,7 +39,7 @@ class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#contains(java.lang.Comparable)}.
+	 * Test method for SortedList.contains
 	 */
 	@Test
 	void testContains() {
@@ -47,7 +47,7 @@ class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#get(int)}.
+	 * Test method for SortedList.get
 	 */
 	@Test
 	void testGet() {
@@ -55,7 +55,7 @@ class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.util.SortedList#size()}.
+	 * Test method for SortedList.size
 	 */
 	@Test
 	void testSize() {

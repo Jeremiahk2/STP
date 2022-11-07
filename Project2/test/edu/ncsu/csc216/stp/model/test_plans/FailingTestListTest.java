@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class FailingTestListTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.FailingTestList#setTestPlanName(java.lang.String)}.
+	 * Test method for FailingTestList.setTestPlanName
 	 */
 	@Test
 	void testSetTestPlanName() {
@@ -23,7 +23,7 @@ class FailingTestListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.FailingTestList#addTestCase(edu.ncsu.csc216.stp.model.tests.TestCase)}.
+	 * Test method for FailingTestList.addTestCase
 	 */
 	@Test
 	void testAddTestCase() {
@@ -31,7 +31,7 @@ class FailingTestListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.FailingTestList#getTestCasesAsArray()}.
+	 * Test method for FailingTestList.getTestCasesAsArray
 	 */
 	@Test
 	void testGetTestCasesAsArray() {
@@ -39,7 +39,7 @@ class FailingTestListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.FailingTestList#FailingTestList()}.
+	 * Test method for FailingTestList constructor
 	 */
 	@Test
 	void testFailingTestList() {
@@ -47,7 +47,7 @@ class FailingTestListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.stp.model.test_plans.FailingTestList#clearTests()}.
+	 * Test method for FailingTestList.clearTests
 	 */
 	@Test
 	void testClearTests() {
