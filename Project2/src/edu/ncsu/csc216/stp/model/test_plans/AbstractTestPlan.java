@@ -43,8 +43,11 @@ public abstract class AbstractTestPlan {
 		//IAE should have the message "Invalid name."
 	}
 	
+	/**
+	 * Returns the name of the TestPlan
+	 * @return name of the TestPlan
+	 */
 	public String getTestPlanName() {
-		
 		return null;
 	}
 	
@@ -90,11 +93,19 @@ public abstract class AbstractTestPlan {
 	 */
 	public abstract String[][] getTestCasesAsArray();
 
+	/**
+	 * Returns the TestCase at the given index
+	 * @param idx index of the desired TestCase to be retrieved
+	 * @return TestCase at the given index
+	 */
 	public TestCase getTestCase(int idx) {
-		
 		return null;
 	}
 	
+	/**
+	 * Returns SwapList of TestCases within a TestPlan
+	 * @return SwapList of TestCases within a TestPlan
+	 */
 	public ISwapList<TestCase> getTestCases() {
 		
 		return null;

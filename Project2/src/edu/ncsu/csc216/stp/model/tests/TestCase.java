@@ -169,6 +169,10 @@ public class TestCase {
  		return testPlan;
  	}
  	
+ 	/**
+ 	 * Returns the expected results of the TestCase
+ 	 * @return the expected results of the TestCase
+ 	 */
  	public String getExpectedResults() {
 		
 		return null;
