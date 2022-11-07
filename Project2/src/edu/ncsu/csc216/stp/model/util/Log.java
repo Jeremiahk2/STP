@@ -29,8 +29,9 @@ public class Log<E> implements ILog<E> {
 	}
 
 	/**
-	 * Adds an element to the end of the list. Once an element is added, it cannot be removed.
-	 * @throws NullPointerException if the parameter is null.
+	 * Adds the element to the end of the list.
+	 * @param element element to add
+	 * @throws NullPointerException if element is null 
 	 */
 	@Override
 	public void add(E element) {
@@ -39,9 +40,11 @@ public class Log<E> implements ILog<E> {
 	}
 
 	/**
-	 * returns the element at the specified index
-	 * @return E the element at the specified index
-	 * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to size.
+	 * Returns the element at the given index.
+	 * @param idx index of the element to retrieve
+	 * @return element at the given index
+	 * @throws IndexOutOfBoundsException if the idx is out of bounds
+	 * 		for the list
 	 */
 	@Override
 	public E get(int idx) {
@@ -49,8 +52,8 @@ public class Log<E> implements ILog<E> {
 	}
 
 	/**
-	 * returns the current size field
-	 * @return size the current size field
+	 * Returns the number of elements in the list.
+	 * @return number of elements in the list
 	 */
 	@Override
 	public int size() {

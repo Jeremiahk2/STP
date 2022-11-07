@@ -16,32 +16,62 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	private ListNode front;
 	
 	/**
-	 * Constructor for the SortedList object
+	 * Constructor for the SortedList object, initializes front
 	 */
 	public SortedList() {
 		
 	}
 	
+	/**
+	 * Adds the element to the list in sorted order.
+	 * @param element element to add
+	 * @throws NullPointerException if element is null
+	 * @throws IllegalArgumentException if element cannot be added 
+	 */
 	@Override
 	public void add(E element) {
 		
 	}
 
+	/**
+	 * Returns the element from the given index.  The element is
+	 * removed from the list.
+	 * @param idx index to remove element from
+	 * @return element at given index
+	 * @throws IndexOutOfBoundsException if the idx is out of bounds
+	 * 		for the list
+	 */
 	@Override
 	public E remove(int idx) {
 		return null;
 	}
 
+	/**
+	 * Returns true if the element is in the list.
+	 * @param element element to search for
+	 * @return true if element is found
+	 */
 	@Override
 	public boolean contains(E element) {
 		return false;
 	}
 
+	/**
+	 * Returns the element at the given index.
+	 * @param idx index of the element to retrieve
+	 * @return element at the given index
+	 * @throws IndexOutOfBoundsException if the idx is out of bounds
+	 * 		for the list
+	 */
 	@Override
 	public E get(int idx) {
 		return null;
 	}
 
+	/**
+	 * Returns the number of elements in the list.
+	 * @return number of elements in the list
+	 */
 	@Override
 	public int size() {
 		return 0;

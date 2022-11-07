@@ -21,7 +21,7 @@ public class SwapList<E> implements ISwapList<E> {
 	private int size;
 	
 	/**
-	 * Constructor for the SwapList object
+	 * Constructor for the SwapList object, initializes size to 0 and the array to an empty array with INITIAL_CAPACITY
 	 */
 	public SwapList() {
 		
