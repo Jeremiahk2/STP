@@ -36,6 +36,7 @@ public class TestCase {
 	 * @param testType the type of test case
 	 * @param testDescription the description of the test case
 	 * @param expectedResults the expected results of the test case
+	 * @throws IllegalArgumentException if any of the parameters are null or an empty string
 	 */
 	public TestCase(String testCaseId, String testType, String testDescription, String expectedResults) {
 		setTestCaseId(testCaseId);

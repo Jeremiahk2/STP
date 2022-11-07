@@ -25,6 +25,7 @@ public class TestResult {
 	 * Constructor for TestResult, sets passing and actualResults based on client parameters
 	 * @param passing whether or not the test is passing.
 	 * @param actualResults The actual results from running the test
+	 * @throws IllegalArgumentException if actualResults is null or an empty string
 	 */
 	public TestResult(boolean passing, String actualResults) {
 		setPassing(passing);

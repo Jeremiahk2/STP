@@ -6,7 +6,7 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
  * Extends AbstractTestPlan and holds the failing test cases for all projects currently available 
  * in the system
  * @author Ryan McPhee
- *
+ * @author Jeremiah Knizley
  */
 public class FailingTestList extends AbstractTestPlan {
 
@@ -14,7 +14,7 @@ public class FailingTestList extends AbstractTestPlan {
 	public static final String FAILING_TEST_LIST_NAME = "Failing Tests";
 	
 	/**
-	 * Constructor for the FailingTestList object
+	 * Constructor for FailingTestList, sets the name as FAILING_TEST_LIST_NAME
 	 */
 	public FailingTestList() {
 		super(FAILING_TEST_LIST_NAME);
@@ -30,10 +30,12 @@ public class FailingTestList extends AbstractTestPlan {
 	}
 	
 	/**
-	 * Sets the TestPlan name to the constant FAILING_TEST_LIST_NAME String
+	 * Sets the TestPlan name to the parameter
 	 * 
 	 * @param testPlanName name of the TestPlan
+	 * @throws IllegalArgumentException if testPlanName is not the same as FAILING_TEST_LIST_NAME (Case insensitive)
 	 */
+	@Override
 	public void setTestPlanName(String testPlanName) {
 		
 	}

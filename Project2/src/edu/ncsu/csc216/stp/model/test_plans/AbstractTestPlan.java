@@ -28,6 +28,7 @@ public abstract class AbstractTestPlan {
 	 * Constructor for AbstractTestPlan, sets testPlanName field to parameter.
 	 * Constructs testCases as an empty list.
 	 * @param testPlanName the name of the test plan
+	 * @throws IllegalArgumentException if testPlanName is null or an empty string
 	 */
 	public AbstractTestPlan(String testPlanName) {
 		
@@ -54,6 +55,8 @@ public abstract class AbstractTestPlan {
 	/**
 	 * adds the given TestCase to the end of the list. May throw exceptions from TestCase constructor
 	 * @param t the test case to be added to the plan.
+	 * @throws NullPointerException if t is null
+	 * @throws IllegalArgumentException if t cannot be added
 	 */
 	public void addTestCase(TestCase t) {
 		
@@ -63,7 +66,7 @@ public abstract class AbstractTestPlan {
 	 * removes the TestCase from the list of test cases at the specified index. The removed TestCase is returned
 	 * @param idx the index at which to remove from the testCases list.
 	 * @return TestCase the test case that was removed from the list
-	 * 
+	 * @throws IndexOutOfBoundsException if idx is out of bounds
 	 */
 	public TestCase removeTestCase(int idx) {
 		return null;
@@ -82,6 +85,9 @@ public abstract class AbstractTestPlan {
 	 * @param idx the index in the list at which the TestResult will be added to
 	 * @param passing a boolean representing whether or not the TestResult is passing
 	 * @param actualResult the actualResults of the testResult
+	 * @throws IllegalArgumentException if actualResult is null or an empty string
+	 * @throws NullPointerException if the element to add is null
+	 * @throws IndexOutOfBoundsException if idx is not in bounds
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
 		
@@ -97,6 +103,7 @@ public abstract class AbstractTestPlan {
 	 * Returns the TestCase at the given index
 	 * @param idx index of the desired TestCase to be retrieved
 	 * @return TestCase at the given index
+	 * @throws IndexOutOfBoundsException if index is out of bounds
 	 */
 	public TestCase getTestCase(int idx) {
 		return null;

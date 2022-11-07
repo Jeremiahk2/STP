@@ -37,6 +37,9 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	/**
 	 * Overrides addTestCase from AbstractTestPlan.
 	 * Adds the test case via a call to super class (AbstractTestPlan), but sets the TestCase's TestPlan to this test plan (explicitly using this keyword).
+	 * @param t the test case to be added to the list
+	 * @throws NullPointerException if t is null
+	 * @throws IllegalArgumentException if t cannot be added
 	 */
 	@Override
 	public void addTestCase(TestCase t) {

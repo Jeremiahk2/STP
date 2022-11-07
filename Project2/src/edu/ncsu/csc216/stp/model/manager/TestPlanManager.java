@@ -15,7 +15,7 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
  * Contains a list of TestPlans, the FailingTestList, and the operations needed to manipulate
  * these lists.
  * @author Ryan McPhee
- *
+ * @author Jeremiah Knizley
  */
 public class TestPlanManager {
 
@@ -29,14 +29,14 @@ public class TestPlanManager {
 	private boolean isChanged;
 	
 	/**
-	 * Constructor for the TestPlanManager object
+	 * Constructor for the TestPlanManager, constructs testPlans as an empty list. Constructs failingTestList and sets it as the currentTestPlan. isChanged is initialized to false.
 	 */
 	public TestPlanManager() {
 		
 	}
 	
 	/**
-	 * Loads TestPlans from a given file
+	 * Loads TestPlans from a given file. Duplicates are not loaded, invalid plans are not added.
 	 * @param inputFile file to retrieve TestPlans from
 	 */
 	public void loadTestPlans(File inputFile) {
@@ -60,8 +60,9 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Add a TestPlan to the TstPlanManager's SortedList of TestPlans
+	 * Add a TestPlan to the TestPlanManager's SortedList of TestPlans
 	 * @param testPlanName name of the TestPlan to be added
+	 * @throws IllegalArgumentException if testPlanName is "Failing Tests" or a duplicate of an existing testPlan (case insensitive for both)
 	 */
 	public void addTestPlan(String testPlanName) {
 		
@@ -83,7 +84,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Sets the currentTestPlan to the TestPlan with the given name
+	 * Sets the currentTestPlan to the TestPlan with the given name. If a testPlan with testPlanName is not found, the failingTestList is made current.
 	 * @param testPlanName name of the desired TestPlan to be set as the currentTestPlan
 	 */
 	public void setCurrentTestPlan(String testPlanName) {
@@ -91,7 +92,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Returns an AbstractTestPlan of the currentTestPlan
+	 * Returns the currentTestPlan as an AbstractTestPlan
 	 * @return AbstractTestPlan of the currentTestPlan
 	 */
 	public AbstractTestPlan getCurrentTestPlan() {
@@ -101,6 +102,7 @@ public class TestPlanManager {
 	/**
 	 * Allows the user to edit the TestPlan of the given name
 	 * @param testPlanName name of the desired TestPlan to be edited
+	 * @throws IllegalArgumentException if currentTestPlan is the FailingTestList, or if testPlanName is null, empty, or equal to "Failing Tests" (case insensitive)
 	 */
 	public void editTestPlan(String testPlanName) {
 		
@@ -108,6 +110,7 @@ public class TestPlanManager {
 	
 	/**
 	 * Removes TestPlan from the TestPlanManager
+	 * @throws IllegalArgumentException if the currentTestPlan is the FailingTestList
 	 */
 	public void removeTestPlan() {
 		

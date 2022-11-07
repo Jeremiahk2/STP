@@ -11,7 +11,14 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
 
 /**
  * Processes a file containing test plans with zero to many test cases each with zero to many results
+ * The format for the file should look like this:
+ * ! (Test plan name)
+ * # (Test case name), (Test case type)
+ * * (Test Description)     //may contain multiple lines, if so they will be numbered: 1. (Test description line 1)\n 2. (Test description line 2)
+ * * (Expected results)
+ * This continues for each case, and subsequently, each plan.
  * @author mcphe
+ * @author Jeremiah Knizley
  *
  */
 public class TestPlanReader {
