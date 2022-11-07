@@ -6,6 +6,7 @@ package edu.ncsu.csc216.stp.model.util;
 /**
  * An Array based list that maintains a log of information. 
  * Implements ILog, thus elements added to the log also cannot be removed.
+ * Utilizes an array-based approach.
  * @author Jeremiah Knizley
  * @author Ryan McPhee
  * @param <E> a generic type to work with any type

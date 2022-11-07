@@ -5,7 +5,7 @@ package edu.ncsu.csc216.stp.model.util;
 
 /**
  * Implements the ISortedList interface that represents a list that keeps objects in sorted
- * order as defined by the Comparable interface
+ * order as defined by the Comparable interface. Utilizes a LinkedList approach
  * @author Jeremiah Knizley
  *
  * @param <E> type for SortedList; must implement Comparable

@@ -5,7 +5,7 @@ package edu.ncsu.csc216.stp.model.util;
 
 /**
  * Implements the ISwapList interface that represents a list that changes the position of elements
- * through swap operations
+ * through swap operations. Utilizes an Array-based approach to lists.
  * @author Jeremiah Knizley
  * @author Ryan McPhee
  *
