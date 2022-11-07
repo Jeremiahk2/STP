@@ -40,7 +40,7 @@ public class TestPlanReader {
 	/**
 	 * Helper method to process the individual TestCases from the given TestPlan
 	 * @param plan the TestPlan containing the given TestCase that is being read
-	 * @param caseString String containg the whole TestCase as read by the processTestPlan method
+	 * @param caseString String containing the whole TestCase as read by the processTestPlan method
 	 * @return TestCase recorded within the given String
 	 */
 	private TestCase processTest(AbstractTestPlan plan, String caseString) {
