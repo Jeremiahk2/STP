@@ -25,8 +25,10 @@ public class Log<E> implements ILog<E> {
 	 * constructor for Log. Constructs log array with INIT_CAPACITY as it's length.
 	 * Initializes size to 0
 	 */
+	@SuppressWarnings("unchecked")
 	public Log() {
-		
+		log = (E[]) new Object[INIT_CAPACITY];
+		size = 0;
 	}
 
 	/**
@@ -34,10 +36,22 @@ public class Log<E> implements ILog<E> {
 	 * @param element element to add
 	 * @throws NullPointerException if element is null 
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void add(E element) {
+		if (element == null) {
+			throw new NullPointerException("Cannot add null element.");
+		}
+		log[size] = element;
+		size++;
+		if (size == log.length) {
+			E[] tempLog = (E[]) new Object[size * 2];
+			for (int i = 0; i < log.length; i++) {
+				tempLog[i] = log[i];
+			}
+			log = tempLog;
+		}
 		
-		//Exception message should be "Cannot add null element."
 	}
 
 	/**
@@ -49,7 +63,10 @@ public class Log<E> implements ILog<E> {
 	 */
 	@Override
 	public E get(int idx) {
-		return null;
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		return log[idx];
 	}
 
 	/**

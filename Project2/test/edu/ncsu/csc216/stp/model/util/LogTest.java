@@ -19,7 +19,8 @@ class LogTest {
 	 */
 	@Test
 	void testLog() {
-		fail("Not yet implemented");
+		Log<String> log = new Log<>();
+		assertEquals(0, log.size());
 	}
 
 	/**
@@ -27,7 +28,26 @@ class LogTest {
 	 */
 	@Test
 	void testAdd() {
-		fail("Not yet implemented");
+		Log<String> log = new Log<>();
+		assertDoesNotThrow(() -> log.add("Banana"));
+		assertEquals(1, log.size());
+		//Check for adding null element
+		Exception e1 = assertThrows(NullPointerException.class, () -> log.add(null));
+		assertEquals("Cannot add null element.", e1.getMessage());
+		//check that size wasn't increased after adding null element
+		assertEquals(1, log.size());
+		assertDoesNotThrow(() -> log.add("Grape"));
+		//Check size and contents after adding things.
+		assertEquals(2, log.size());
+		assertEquals("Banana", log.get(0));
+		assertEquals("Grape", log.get(1));
+		
+		//Check that adding after the capacity is accepted.
+		for (int i = 0; i < 9; i++) {
+			assertDoesNotThrow(() -> log.add("Grape"));
+		}
+		
+		
 	}
 
 	/**
@@ -35,15 +55,13 @@ class LogTest {
 	 */
 	@Test
 	void testGet() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for Log.size
-	 */
-	@Test
-	void testSize() {
-		fail("Not yet implemented");
+		Log<String> log = new Log<>();
+		assertDoesNotThrow(() -> log.add("Banana"));
+		assertDoesNotThrow(() -> log.add("Banana"));
+		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> log.get(2));
+		assertEquals("Invalid index.", e1.getMessage());
+		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> log.get(-1));
+		assertEquals("Invalid index.", e2.getMessage());
 	}
 
 }
