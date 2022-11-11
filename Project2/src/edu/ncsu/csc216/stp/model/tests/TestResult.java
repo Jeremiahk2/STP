@@ -38,8 +38,10 @@ public class TestResult {
 	 * @throws IllegalArgumentException if actualResults is null or empty string
 	 */
 	private void setActualResults(String actualResults) {
-		
-		
+		if (actualResults == null || "".equals(actualResults)) {
+			throw new IllegalArgumentException("Invalid test results.");
+		}
+		this.actualResults = actualResults;
 		//When making the exception, it should have the message "Invalid test results."
 	}
 
@@ -48,7 +50,7 @@ public class TestResult {
 	 * @return actualResults the actual results from running the test
 	 */
 	public String getActualResults() {
-		return null;
+		return actualResults;
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public class TestResult {
 	 * @param passing a boolean representing whether or not the test is passing.
 	 */
 	private void setPassing(boolean passing) {
-		
+		this.passing = passing;
 	}
 	
 	/**
@@ -64,7 +66,7 @@ public class TestResult {
 	 * @return passing a boolean representing whether or not the test is passing.
 	 */
 	public boolean isPassing() {
-		return false;
+		return passing;
 	}
 	
 	/**
@@ -75,9 +77,11 @@ public class TestResult {
 	 */
 	@Override
 	public String toString() {
-		
-		//Use public constants for PASS and FAIL
-		return null;
+		if (isPassing()) {
+			return PASS + ": " + actualResults;
+		} else {
+			return FAIL + ": " + actualResults;
+		}
 	}
 	
 }

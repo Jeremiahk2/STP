@@ -129,19 +129,28 @@ public class TestCase {
  	 * @throws IllegalArgumentException if the TestResult cannot be constructed
  	 */
  	public void addTestResult(boolean passing, String actualResults) {
- 		
+ 		TestResult newTestResult = new TestResult(passing, actualResults);
+ 		testResults.add(newTestResult);
  		
  		
  	}
  	
  	/**
- 	 * returns the status of the testCase ass "PASS" or "FAIL", depending on the passing field
+ 	 * returns the status of the testCase as "PASS" or "FAIL", depending on the passing field
  	 * @return String depending on the passing field.
  	 */
  	public String getStatus() {
- 		
- 		//Be sure to use constants from TestResult for PASS and FAIL
- 		return null;
+ 		boolean casePassing = true;
+ 		for (int i = 0; i < testResults.size(); i++) {
+ 			if (!testResults.get(i).isPassing()) {
+ 				casePassing = false;
+ 			}
+ 		}
+ 		if (casePassing) {
+ 			return TestResult.PASS;
+ 		} else {
+ 			return TestResult.FAIL;
+ 		}
  	}
  	
  	/**
@@ -151,7 +160,14 @@ public class TestCase {
  	 * @return String actualResults Log as a string
  	 */
  	public String getActualResultsLog() {
- 		return null;
+ 		String returnString = "";
+ 		for (int i = 0; i < testResults.size(); i++) {
+ 			returnString += "- " + testResults.get(i).toString();
+ 			if (i != testResults.size() - 1) {
+ 				returnString += "\n";
+ 			}
+ 		}
+ 		return returnString;
  	}
  	
  	/**
@@ -160,7 +176,10 @@ public class TestCase {
  	 * @return boolean depending on the testResults Log
  	 */
  	public boolean isTestCasePassing() {
- 		return false;
+ 		if (testResults.size() == 0) {
+ 			return false;
+ 		}
+ 		return testResults.get(testResults.size() - 1).isPassing();
  	}
  	
  	/**
@@ -169,7 +188,10 @@ public class TestCase {
  	 * @throws IllegalArgumentException if the parameter testPlan is null.
  	 */
  	public void setTestPlan(TestPlan testPlan) {
- 		
+ 		if (testPlan == null) {
+ 			throw new IllegalArgumentException("Null TestPlan.");
+ 		}
+ 		this.testPlan = testPlan;
  	}
  	
  	/**
@@ -193,7 +215,6 @@ public class TestCase {
  	 * @return String the string representation of the TestCase
  	 */
  	public String toString() {
- 		//See data formatting part of the design to find out how to make this.
- 		return null;
+ 		return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + expectedResults + testResults.toString();
  	}
 }
