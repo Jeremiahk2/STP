@@ -5,6 +5,7 @@ package edu.ncsu.csc216.stp.model.tests;
 
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.util.ILog;
+import edu.ncsu.csc216.stp.model.util.Log;
 
 /**
  * Class that contains the information about each individual test case including the testCaseId,
@@ -43,6 +44,8 @@ public class TestCase {
 		setTestType(testType);
 		setTestDescription(testDescription);
 		setExpectedResults(expectedResults);
+		testPlan = null;
+		testResults = new Log<TestResult>();
 		//Still need to do construction of testResults and set testPlan to null
 	}
 	
@@ -60,6 +63,10 @@ public class TestCase {
 	 * @throws IllegalArgumentException if testCaseID is null or empty string
 	 */
 	private void setTestCaseId(String testCaseId) {
+		if (testCaseId == null || "".equals(testCaseId)) {
+			throw new IllegalArgumentException("Invalid test information.");
+		}
+		this.testCaseId = testCaseId;
 		
 	}
 	
@@ -77,7 +84,10 @@ public class TestCase {
 	 * @throws IllegalArgumentEcception if testType is null or an empty string
 	 */
 	private void setTestType(String testType) {
-		
+		if (testType == null || "".equals(testType)) {
+			throw new IllegalArgumentException("Invalid test information.");
+		}
+		this.testType = testType;
 	}
 	
 	/**
@@ -94,7 +104,10 @@ public class TestCase {
 	 * @throws IllegalArgumentException if testDescription is null or an empty string
 	 */
 	private void setTestDescription(String testDescription) {
-		
+		if (testDescription == null || "".equals(testDescription)) {
+			throw new IllegalArgumentException("Invalid test information.");
+		}
+		this.testDescription = testDescription;
 	}
 	
 	/**
@@ -103,7 +116,10 @@ public class TestCase {
 	 * @throws IllegalArgumentException if expectedResults is null or an empty string
 	 */
  	private void setExpectedResults(String expectedResults) {
- 		
+ 		if (expectedResults == null || "".equals(expectedResults)) {
+			throw new IllegalArgumentException("Invalid test information.");
+		}
+		this.expectedResults = expectedResults;
  	}
  	
  	/**
@@ -113,6 +129,8 @@ public class TestCase {
  	 * @throws IllegalArgumentException if the TestResult cannot be constructed
  	 */
  	public void addTestResult(boolean passing, String actualResults) {
+ 		
+ 		
  		
  	}
  	
@@ -167,8 +185,7 @@ public class TestCase {
  	 * @return the expected results of the TestCase
  	 */
  	public String getExpectedResults() {
-		
-		return null;
+		return expectedResults;
 	}
  	
  	/**
