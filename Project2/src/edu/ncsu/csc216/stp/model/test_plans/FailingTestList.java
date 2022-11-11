@@ -37,7 +37,10 @@ public class FailingTestList extends AbstractTestPlan {
 	 */
 	@Override
 	public void setTestPlanName(String testPlanName) {
-		
+		if (!FAILING_TEST_LIST_NAME.equalsIgnoreCase(testPlanName)) {
+			throw new IllegalArgumentException("Invalid test plan name.");
+		}
+		this.testPlanName = testPlanName;
 	}
 	
 	/**
