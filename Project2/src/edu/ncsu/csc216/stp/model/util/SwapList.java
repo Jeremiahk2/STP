@@ -64,7 +64,7 @@ public class SwapList<E> implements ISwapList<E> {
 	}
 
 	/**
-	 * Moves the element at the given index to index+!. If the element is already at the front of the list, the list
+	 * Moves the element at the given index to index+1. If the element is already at the front of the list, the list
 	 * is not changed
 	 * @param idx index of the element to move down
 	 * @throws IndexOutOfBoundsException if the idx is out of bounds for the list
