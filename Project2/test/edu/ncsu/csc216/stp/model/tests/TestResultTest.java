@@ -19,23 +19,15 @@ class TestResultTest {
 	 */
 	@Test
 	void testTestResult() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for TestResult.getActualResults
-	 */
-	@Test
-	void testGetActualResults() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for TestResult.isPassing
-	 */
-	@Test
-	void testIsPassing() {
-		fail("Not yet implemented");
+		TestResult result = new TestResult(false, "ActualResults");
+		assertEquals(false, result.isPassing());
+		assertEquals("ActualResults", result.getActualResults());
+		
+		Exception e1 = assertThrows(IllegalArgumentException.class, () -> new TestResult(false, null));
+		assertEquals("Invalid test results.", e1.getMessage());
+		
+		Exception e2 = assertThrows(IllegalArgumentException.class, () -> new TestResult(true, ""));
+		assertEquals("Invalid test results.", e2.getMessage());
 	}
 
 	/**
@@ -43,7 +35,11 @@ class TestResultTest {
 	 */
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		TestResult result1 = new TestResult(false, "ActualResults");
+		TestResult result2 = new TestResult(true, "TrueResults");
+		
+		assertEquals("FAIL: ActualResults", result1.toString());
+		assertEquals("PASS: TrueResults", result2.toString());
 	}
 
 }

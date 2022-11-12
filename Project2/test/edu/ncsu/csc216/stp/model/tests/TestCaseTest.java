@@ -19,8 +19,15 @@ class TestCaseTest {
 	 */
 	@Test
 	void testTestCase() {
-		fail("Not yet implemented");
+		//test valid constructor
+		TestCase case1 = new TestCase("TestCaseId", "TestType", "TestDescription", "ExpectedResults");
+		assertEquals(null, case1.getTestPlan());
+		assertEquals("TestCaseId", case1.getTestCaseId());
+		assertEquals("TestType", case1.getTestType());
+		assertEquals("TestDescription", case1.getTestType());
+		assertEquals("ExpectedResults", case1.getExpectedResults());
 	}
+	
 
 	/**
 	 * Test method for TestCase.getTestCaseId
@@ -59,7 +66,10 @@ class TestCaseTest {
 	 */
 	@Test
 	void testAddTestResult() {
-		fail("Not yet implemented");
+		TestCase case1 = new TestCase("TestCaseId", "TestType", "TestDescription", "ExpectedResults");
+		assertDoesNotThrow(() -> case1.addTestResult(true, "ActualResult"));
+		
+		
 	}
 
 	/**
