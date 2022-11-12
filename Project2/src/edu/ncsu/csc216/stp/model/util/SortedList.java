@@ -39,13 +39,34 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		if (contains(element)) {
 			throw new IllegalArgumentException("Cannot add duplicate element.");
 		}
-		int floorIndex = 0;
-		int ceilingIndex = 0;
-		ListNode current = front;
-		for (int i = 0; i < size; i++) {
-			int comparison = element.compareTo(current.data);
-			
+		if (size() == 0) {
+			front = new ListNode(element, null);
+			size++;
 		}
+		else {
+			ListNode current = front;
+			if (element.compareTo(current.data) < 0) {
+				front = new ListNode(element, current);
+				size++;
+			}
+			else {
+				for (int i = 0; i < size; i++) {
+					int comparison = 0;
+					try {
+						comparison = element.compareTo(current.next.data);
+					} catch (NullPointerException e) {
+						break;
+					}
+					if (comparison < 0) {
+						break;
+					}
+					current = current.next;
+				}
+				current.next = new ListNode(element, current.next);
+				size++;
+			}
+		}
+		
 	}
 
 	/**
@@ -58,7 +79,17 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	@Override
 	public E remove(int idx) {
-		return null;
+		checkIndex(idx);
+		
+		ListNode current = front;
+		E rtnElement;
+		for (int i = 0; i < idx - 1; i++) {
+			current = current.next;
+		}
+		rtnElement = current.next.data;
+		current.next = current.next.next;
+		size--;
+		return rtnElement;
 	}
 	
 	/**
@@ -67,7 +98,9 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @throws IndexOutOfBoundsException if the index is not within bounds (less than 0, at size or greater).
 	 */
 	private void checkIndex(int idx) {
-		
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
 	}
 
 	/**
@@ -77,6 +110,14 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	@Override
 	public boolean contains(E element) {
+		ListNode current = front;
+		for (int i = 0; i < size; i++) {
+			int comparison = current.data.compareTo(element);
+			if (comparison == 0) {
+				return true;
+			}
+			current = current.next;
+		}
 		return false;
 	}
 
@@ -89,7 +130,12 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	@Override
 	public E get(int idx) {
-		return null;
+		checkIndex(idx);
+		ListNode current = front;
+		for (int i = 0; i < idx; i++) {
+			current = current.next;
+		}
+		return current.data;
 	}
 
 	/**
@@ -98,7 +144,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	@Override
 	public int size() {
-		return 0;
+		return size;
 	}
 	
 	/**

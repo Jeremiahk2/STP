@@ -36,12 +36,16 @@ class SortedListTest {
 		assertEquals("Banana", list.get(1));
 		assertEquals("Pear", list.get(2));
 		assertEquals(3, list.size());
+		list.add("Mango");
+		list.add("Orange");
+		assertEquals("Mango", list.get(2));
+		assertEquals("Orange", list.get(3));
 		
 		Exception e1 = assertThrows(NullPointerException.class, () -> list.add(null));
 		assertEquals("Cannot add null element.", e1.getMessage());
 		
 		Exception e2 = assertThrows(IllegalArgumentException.class, () -> list.add("Apple"));
-		assertEquals("Cannot add duplicate element", e2.getMessage());
+		assertEquals("Cannot add duplicate element.", e2.getMessage());
 		
 	}
 
@@ -54,20 +58,25 @@ class SortedListTest {
 		list.add("Banana");
 		list.add("Pear");
 		list.add("Apple");
-		assertEquals("Apple", list.get(0));
-		assertEquals("Banana", list.get(1));
-		assertEquals("Pear", list.get(2));
-		assertEquals(3, list.size());
+		list.add("Mango");
+		list.add("Orange");
 		
 		assertEquals("Banana", list.remove(1));
+		assertEquals(4, list.size());
 		assertEquals("Apple", list.get(0));
-		assertEquals("Pear", list.get(1));
-		assertEquals(2, list.size());
+		assertEquals("Mango", list.get(1));
+		assertEquals("Orange", list.get(2));
+		assertEquals("Pear", list.get(3));
+		assertEquals("Pear", list.remove(3));
+		assertEquals("Apple", list.get(0));
+		assertEquals("Mango", list.get(1));
+		assertEquals("Orange", list.get(2));
+		assertEquals(3, list.size());
 		
 		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
 		assertEquals("Invalid index.", e1.getMessage());
 		
-		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2));
+		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(3));
 		assertEquals("Invalid index.", e2.getMessage());
 		
 		
