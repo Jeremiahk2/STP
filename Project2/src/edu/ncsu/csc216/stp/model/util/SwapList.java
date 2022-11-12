@@ -23,8 +23,10 @@ public class SwapList<E> implements ISwapList<E> {
 	/**
 	 * Constructor for the SwapList object, initializes size to 0 and the array to an empty array with INITIAL_CAPACITY
 	 */
+	@SuppressWarnings("unchecked")
 	public SwapList() {
-		
+		list = (E[]) new Object[INITIAL_CAPACITY];
+		size = 0;
 	}
 	
 	/**
@@ -33,9 +35,21 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @throws NullPointerException if element is null
 	 * @throws IllegalArgumentException if element cannot be added 
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void add(E element) {
-		
+		if (element == null) {
+			throw new NullPointerException("Cannot add null element.");
+		}
+		list[size()] = element;
+		size++;
+		if (list.length == size()) {
+			E[] tempArray = (E[]) new Object[size() * 2];
+			for (int i = 0; i < size(); i++) {
+				tempArray[i] = list[i];
+			}
+			list = tempArray;
+		}
 	}
 
 	/**
@@ -48,7 +62,16 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public E remove(int idx) {
-		return null;
+		if (idx < 0 || idx >= size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		E element = get(idx);
+		for (int i = idx; i < size(); i++) {
+			list[i] = list[i + 1];
+		}
+		list[size() - 1] = null;
+		size--;
+		return element;
 	}
 
 	/**
@@ -59,7 +82,14 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public void moveUp(int idx) {
-		
+		if (idx < 0 || idx >= size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (idx != 0) {
+			E element = list[idx];
+			list[idx] = list[idx - 1];
+			list[idx - 1] = element;
+		}
 		
 	}
 
@@ -71,7 +101,14 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public void moveDown(int idx) {
-		
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (idx != size() - 1) {
+			E element = list[idx];
+			list[idx] = list[idx + 1];
+			list[idx + 1] = element;
+		}
 		
 	}
 
@@ -84,7 +121,14 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public void moveToFront(int idx) {
-		
+		if (idx < 0 || idx >= size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (idx != 0) {
+			E element = list[idx];
+			list[idx] = list[0];
+			list[0] = element;
+		}
 	}
 
 	/**
@@ -96,7 +140,14 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public void moveToBack(int idx) {
-		
+		if (idx < 0 || idx >= size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (idx != size() - 1) {
+			E element = list[idx];
+			list[idx] = list[size() - 1];
+			list[size() - 1] = element;
+		}
 	}
 
 	/**
@@ -108,7 +159,10 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public E get(int idx) {
-		return null;
+		if (idx < 0 || idx >= size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		return list[idx];
 	}
 
 	/**
@@ -117,7 +171,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@Override
 	public int size() {
-		return 0;
+		return size;
 	}
 
 }

@@ -47,6 +47,14 @@ class SwapListTest {
 		
 		Exception e1 = assertThrows(NullPointerException.class, () -> list.add(null));
 		assertEquals("Cannot add null element.", e1.getMessage());
+		
+		//test adding past capacity
+		list.add("Wolf");
+		list.add("Dog");
+		list.add("Animal");
+		assertDoesNotThrow(() -> list.add("Blue"));
+		assertDoesNotThrow(() -> list.add("Da"));
+		assertDoesNotThrow(() -> list.add("Ba"));
 	}
 
 	/**
@@ -71,7 +79,7 @@ class SwapListTest {
 		assertEquals(4, list.size());
 		
 		//try removing from the end of the list
-		assertEquals("Sandwich", list.remove(4));
+		assertEquals("Sandwich", list.remove(3));
 		
 		assertEquals("Cherry", list.get(0));
 		assertEquals("Pineapple", list.get(1));
@@ -91,6 +99,17 @@ class SwapListTest {
 		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2));
 		assertEquals("Invalid index.", e2.getMessage());
 		
+		//test removing at capacity
+		list.add("Grenn");
+		list.add("Monopoly");
+		list.add("Fourteen");
+		list.add("Wow");
+		list.add("Sell");
+		list.add("Confidence");
+		list.add("Trade");
+		list.add("Money");
+		
+		assertDoesNotThrow(() -> list.remove(9));
 	}
 
 	/**
@@ -134,7 +153,7 @@ class SwapListTest {
 		
 		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveUp(5));
 		assertEquals("Invalid index.", e2.getMessage());
-		
+
 	}
 
 	/**
@@ -150,7 +169,7 @@ class SwapListTest {
 		list.add("Draenor");
 		
 		//try moving down the back element
-		list.moveUp(4);
+		list.moveDown(4);
 		assertEquals("Courtesy", list.get(0));
 		assertEquals("Integrity", list.get(1));
 		assertEquals("Perserverance", list.get(2));
@@ -158,7 +177,7 @@ class SwapListTest {
 		assertEquals("Draenor", list.get(4));
 		
 		//try moving down a middle element
-		list.moveUp(2);
+		list.moveDown(2);
 		assertEquals("Courtesy", list.get(0));
 		assertEquals("Integrity", list.get(1));
 		assertEquals("Azeroth", list.get(2));
@@ -166,7 +185,7 @@ class SwapListTest {
 		assertEquals("Draenor", list.get(4));
 		
 		//try moving down front element
-		list.moveUp(0);
+		list.moveDown(0);
 		assertEquals("Integrity", list.get(0));
 		assertEquals("Courtesy", list.get(1));
 		assertEquals("Azeroth", list.get(2));
@@ -219,6 +238,12 @@ class SwapListTest {
 		assertEquals("Anduin", list.get(3));
 		assertEquals("Tyrande", list.get(4));
 		assertEquals(5, list.size());
+		
+		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToFront(-1));
+		assertEquals("Invalid index.", e1.getMessage());
+		
+		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToFront(5));
+		assertEquals("Invalid index.", e2.getMessage());
 	}
 
 	/**
@@ -259,6 +284,12 @@ class SwapListTest {
 		assertEquals("Inanna", list.get(3));
 		assertEquals("Thirain", list.get(4));
 		assertEquals(5, list.size());
+		
+		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToBack(-1));
+		assertEquals("Invalid index.", e1.getMessage());
+		
+		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToBack(5));
+		assertEquals("Invalid index.", e2.getMessage());
 	}
 
 	/**
@@ -272,10 +303,10 @@ class SwapListTest {
 		list.add("Stormrage");
 		list.add("Firekeeper");
 		list.add("Blacksmith");
-		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
+		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
 		assertEquals("Invalid index.", e1.getMessage());
 		
-		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(5));
+		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.get(5));
 		assertEquals("Invalid index.", e2.getMessage());
 	}
 
