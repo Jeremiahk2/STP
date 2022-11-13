@@ -20,7 +20,7 @@ class TestResultTest {
 	@Test
 	void testTestResult() {
 		TestResult result = new TestResult(false, "ActualResults");
-		assertEquals(false, result.isPassing());
+		assertFalse(result.isPassing());
 		assertEquals("ActualResults", result.getActualResults());
 		
 		Exception e1 = assertThrows(IllegalArgumentException.class, () -> new TestResult(false, null));
