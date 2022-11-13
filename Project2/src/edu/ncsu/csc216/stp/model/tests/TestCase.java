@@ -124,7 +124,7 @@ public class TestCase {
  	
  	/**
  	 * creates a TestResult from the parameters and adds it to the testResults Log.
- 	 * @param passing the status of the TestResult when it is created
+ 	 * @param passing status of the TestResult when it is created
  	 * @param actualResults the actual results of the TestResult
  	 * @throws IllegalArgumentException if the TestResult cannot be constructed
  	 */
@@ -140,13 +140,14 @@ public class TestCase {
  	 * @return String depending on the passing field.
  	 */
  	public String getStatus() {
- 		boolean casePassing = true;
- 		for (int i = 0; i < testResults.size(); i++) {
- 			if (!testResults.get(i).isPassing()) {
- 				casePassing = false;
- 			}
- 		}
- 		if (casePassing) {
+// 		boolean casePassing = true;
+ 		//TODO: Verify
+// 		for (int i = 0; i < testResults.size(); i++) {
+// 			if (!testResults.get(i).isPassing()) {         Probably unnecessary
+// 				casePassing = false;
+// 			}
+// 		}
+ 		if (isTestCasePassing()) {
  			return TestResult.PASS;
  		} else {
  			return TestResult.FAIL;
@@ -163,9 +164,10 @@ public class TestCase {
  		String returnString = "";
  		for (int i = 0; i < testResults.size(); i++) {
  			returnString += "- " + testResults.get(i).toString();
- 			if (i != testResults.size() - 1) {
+ 			//if (i != testResults.size() - 1) {    This if statement may be required later on, if it turns out single lines don't have a newline character.
  				returnString += "\n";
- 			}
+ 				//TODO: Verify
+ 			//}
  		}
  		return returnString;
  	}
