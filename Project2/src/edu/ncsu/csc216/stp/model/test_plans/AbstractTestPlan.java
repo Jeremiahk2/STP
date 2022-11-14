@@ -6,7 +6,9 @@ package edu.ncsu.csc216.stp.model.test_plans;
 import java.util.Objects;
 
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.tests.TestResult;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
+import edu.ncsu.csc216.stp.model.util.SwapList;
 
 /**
  * Abstract class for different kinds of TestPlans.
@@ -31,7 +33,8 @@ public abstract class AbstractTestPlan {
 	 * @throws IllegalArgumentException if testPlanName is null or an empty string
 	 */
 	public AbstractTestPlan(String testPlanName) {
-		
+		setTestPlanName(testPlanName);
+		testCases = new SwapList<TestCase>();
 	}
 	
 	/**
@@ -40,8 +43,10 @@ public abstract class AbstractTestPlan {
 	 * @throws IllegalArgumentException if testPlanName is null or an empty string
 	 */
 	public void setTestPlanName(String testPlanName) {
-		
-		//IAE should have the message "Invalid name."
+		if (testPlanName == null || "".equals(testPlanName)) {
+			throw new IllegalArgumentException("Invalid test plan name");
+		}
+		this.testPlanName = testPlanName;
 	}
 	
 	/**
@@ -49,7 +54,7 @@ public abstract class AbstractTestPlan {
 	 * @return name of the TestPlan
 	 */
 	public String getTestPlanName() {
-		return null;
+		return testPlanName;
 	}
 	
 	/**
@@ -59,7 +64,10 @@ public abstract class AbstractTestPlan {
 	 * @throws IllegalArgumentException if t cannot be added
 	 */
 	public void addTestCase(TestCase t) {
-		
+		if (t == null ) {
+			throw new IllegalArgumentException("Invalid element.");
+		}
+		testCases.add(t);
 	}
 	
 	/**
@@ -69,7 +77,10 @@ public abstract class AbstractTestPlan {
 	 * @throws IndexOutOfBoundsException if idx is out of bounds
 	 */
 	public TestCase removeTestCase(int idx) {
-		return null;
+		if (idx < 0 || idx >= testCases.size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		return testCases.remove(idx);
 	}
 
 	/**
@@ -77,7 +88,13 @@ public abstract class AbstractTestPlan {
 	 * @return the number of failing tests in the test plan.
 	 */
 	public int getNumberOfFailingTests() {
-		return -1;
+		int count = 0;
+		for (int i = 0; i < testCases.size(); i++) {
+			if (!testCases.get(i).isTestCasePassing()) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	/**
@@ -86,11 +103,17 @@ public abstract class AbstractTestPlan {
 	 * @param passing a boolean representing whether or not the TestResult is passing
 	 * @param actualResult the actualResults of the testResult
 	 * @throws IllegalArgumentException if actualResult is null or an empty string
-	 * @throws NullPointerException if the element to add is null
+	 * @throws NullPointerException if the element to add is null TODO
 	 * @throws IndexOutOfBoundsException if idx is not in bounds
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
-		
+		if (actualResult == null || "".equals(actualResult)) {
+			throw new IllegalArgumentException("Invalid TestResult.");
+		}
+		if (idx < 0 || idx >= testCases.size()) {
+			throw new IndexOutOfBoundsException("Invalid index");
+		}
+		testCases.get(idx).addTestResult(passing, actualResult);
 	}
 	
 	/**
@@ -106,7 +129,10 @@ public abstract class AbstractTestPlan {
 	 * @throws IndexOutOfBoundsException if index is out of bounds
 	 */
 	public TestCase getTestCase(int idx) {
-		return null;
+		if (idx < 0 || idx >= testCases.size()) {
+			throw new IndexOutOfBoundsException("Invalid Index");
+		}
+		return testCases.get(idx);
 	}
 	
 	/**
@@ -114,8 +140,7 @@ public abstract class AbstractTestPlan {
 	 * @return SwapList of TestCases within a TestPlan
 	 */
 	public ISwapList<TestCase> getTestCases() {
-		
-		return null;
+		return testCases;
 	}
 	/**
 	 * default override of Object.hashCode()

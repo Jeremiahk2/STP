@@ -31,7 +31,15 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @return String[][] a 2D array representing the TestPlan's test cases
 	 */
 	public String[][] getTestCasesAsArray() {
-		return null;
+		String[][] testCaseArray = new String[getTestCases().size()][3];
+		
+		for (int i = 0; i < testCaseArray.length; i++) {
+			testCaseArray[i][0] = getTestCases().get(i).getTestCaseId();
+			testCaseArray[i][1] = getTestCases().get(i).getTestType();
+			testCaseArray[i][2] = getTestCases().get(i).getStatus();
+		}
+		
+		return testCaseArray;
 	}
 	
 	/**
@@ -43,7 +51,10 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 */
 	@Override
 	public void addTestCase(TestCase t) {
-		
+		if (t == null) {
+			throw new NullPointerException("Null TestCase.");
+		}
+		getTestCases().add(t);
 	}
 
 	/**
