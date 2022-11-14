@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.stp.model.io;
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
@@ -16,6 +18,7 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
  * * (Expected results)
  * This continues for each case, and subsequently, each plan.
  * @author Jeremiah Knizley
+ * @author Ryan McPhee
  *
  */
 public class TestPlanWriter {
@@ -26,6 +29,23 @@ public class TestPlanWriter {
 	 * @param plans the list of plans to be written in the file
 	 */
 	public static void writeTestPlanFile(File file, ISortedList<TestPlan> plans) {
-		
+		try {
+			PrintStream fileWriter = new PrintStream(file);
+			
+			for (int i = 0; i < plans.size(); i++) {
+				fileWriter.println("! " + plans.get(i).getTestPlanName());
+				for (int j = 0; j < plans.get(i).getTestCases().size(); i++) {
+					if (i == plans.size() - 1 && j == plans.get(i).getTestCases().size() - 1 ) {
+						fileWriter.print(plans.get(i).getTestCases().toString());
+					} else {
+						fileWriter.println(plans.get(i).getTestCases().toString());
+					}
+				}
+			}
+			fileWriter.close();
+			
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Unable to save file.");
+		}
 	}
 }
