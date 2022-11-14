@@ -37,26 +37,25 @@ class TestPlanTest {
 		plan.addTestCase(new TestCase("ID2", "Type2", "Description2", "Expected2"));
 		plan.addTestCase(new TestCase("ID3", "Type3", "Description3", "Expected3"));
 		plan.addTestCase(new TestCase("ID4", "Type4", "Description4", "Expected4"));
+		plan.getTestCase(1).addTestResult(true, "Passed");
+		plan.getTestCase(2).addTestResult(true, "Passed");
 		String[][] cases = plan.getTestCasesAsArray();
 		assertEquals(4, cases.length);
 		
-		assertAll("Verifies correct test case array", 
-				() -> assertEquals("ID1", plan.getTestCase(0).getTestCaseId()),
-				() -> assertEquals("ID2", plan.getTestCase(1).getTestCaseId()),
-				() -> assertEquals("ID3", plan.getTestCase(2).getTestCaseId()),
-				() -> assertEquals("ID4", plan.getTestCase(3).getTestCaseId()),
-				() -> assertEquals("Type1", plan.getTestCase(0).getTestType()),
-				() -> assertEquals("Type2", plan.getTestCase(1).getTestType()),
-				() -> assertEquals("Type3", plan.getTestCase(2).getTestType()),
-				() -> assertEquals("Type4", plan.getTestCase(3).getTestType()),
-				() -> assertEquals("Description1", plan.getTestCase(0).getTestDescription()),
-				() -> assertEquals("Description2", plan.getTestCase(1).getTestDescription()),
-				() -> assertEquals("Description3", plan.getTestCase(2).getTestDescription()),
-				() -> assertEquals("Description4", plan.getTestCase(3).getTestDescription()),
-				() -> assertEquals("Expected1", plan.getTestCase(0).getExpectedResults()),
-				() -> assertEquals("Expected2", plan.getTestCase(1).getExpectedResults()),
-				() -> assertEquals("Expected3", plan.getTestCase(2).getExpectedResults()),
-				() -> assertEquals("Expected4", plan.getTestCase(3).getExpectedResults())
+		assertAll("Verifies correct test case array",
+				() -> assertEquals("ID1", cases[0][0]),
+				() -> assertEquals("ID2", cases[1][0]),
+				() -> assertEquals("ID3", cases[2][0]),
+				() -> assertEquals("ID4", cases[3][0]),
+				() -> assertEquals("Type1", cases[0][1]),
+				() -> assertEquals("Type2", cases[1][1]),
+				() -> assertEquals("Type3", cases[2][1]),
+				() -> assertEquals("Type4", cases[3][1]),
+				() -> assertEquals("FAIL", cases[0][2]),
+				() -> assertEquals("PASS", cases[1][2]),
+				() -> assertEquals("PASS", cases[2][2]),
+				() -> assertEquals("FAIL", cases[3][2]),
+				() -> assertEquals(4, cases.length)
 				);
 	}
 
