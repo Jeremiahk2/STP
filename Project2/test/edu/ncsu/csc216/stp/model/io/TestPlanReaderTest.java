@@ -24,7 +24,7 @@ class TestPlanReaderTest {
 	 */
 	@Test
 	void testReadTestPlansFile() {
-		ISortedList<TestPlan> plan0 = TestPlanReader.readTestPlansFile(new File("test-files/test-plans0"));
+		ISortedList<TestPlan> plan0 = TestPlanReader.readTestPlansFile(new File("test-files/test-plans0.txt"));
 		assertEquals(2, plan0.size());
 		
 		TestPlan plan1 = plan0.get(0);

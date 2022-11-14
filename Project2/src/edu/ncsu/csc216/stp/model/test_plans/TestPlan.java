@@ -54,17 +54,41 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 		if (t == null) {
 			throw new NullPointerException("Null TestCase.");
 		}
-		getTestCases().add(t);
+		super.addTestCase(t);
+		t.setTestPlan(this);
+		//getTestCases().add(t);
 	}
 
 	/**
-	 * Compares the names of two TestPlans, the comparison is case sensitive.
+	 * Compares the names of two TestPlans, the comparison is case insensitive.
 	 * @param s the TestPlan to be compared to
 	 * @return int depending on the comparison. If this TestPlan is less than (Alphabetically) then TestPlan s, a -1 is returned. If they are equal, 0. If this TestPlan is greater, a 1 is returned.
 	 */
 	@Override
 	public int compareTo(TestPlan s) {
-		return 0;
+		String name = s.getTestPlanName().toLowerCase();
+		String thisName = getTestPlanName().toLowerCase();
+		char[] nameCharacters = name.toCharArray();
+		char[] thisCharacters = thisName.toCharArray();
+		int commonLength = Math.min(thisCharacters.length, nameCharacters.length);
+		int comparison = 0;
+		for (int i = 0; i < commonLength; i++) {
+			if (Character.getNumericValue(nameCharacters[i]) > Character.getNumericValue(thisCharacters[i])) {
+				comparison = -1;
+				break;
+			}
+			else if (Character.getNumericValue(nameCharacters[i]) < Character.getNumericValue(thisCharacters[i])) {
+				comparison = 1;
+				break;
+			}
+		}
+		if (comparison == 0 && nameCharacters.length > thisCharacters.length) {
+			comparison = -1;
+		}
+		else if (comparison == 0 && nameCharacters.length < thisCharacters.length) {
+			comparison = 1;
+		}
+		return comparison;
 	}
 	
 	
