@@ -75,7 +75,7 @@ public class FailingTestList extends AbstractTestPlan {
 	public void clearTests() {
 		int size = getTestCases().size();
 		for (int i = 0; i < size; i++) {
-			getTestCases().remove(0);
+			removeTestCase(0);
 		}
 	}
 }

@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import edu.ncsu.csc216.stp.model.tests.TestCase;
+
 /**
  * Tests AbstractTestPlan class
  * @author Jeremiah Knizley
@@ -19,31 +21,9 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for AbstractTestPlan's constructor
-	 */
-	@Test
-	void testAbstractTestPlan() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for AbstractTestPlan.setTestPlanName
-	 */
-	@Test
-	void testSetTestPlanName() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for AbstractTestPlan.getTestPlanName
-	 */
-	@Test
-	void testGetTestPlanName() {
-		fail("Not yet implemented");
+		TestPlan plan1 = new TestPlan("ThisIsTheGreatestPlan");
+		TestPlan plan2 = new TestPlan("ThisIsTheGreatestPlan");
+		assertEquals(plan1.hashCode(), plan2.hashCode());
 	}
 
 	/**
@@ -51,7 +31,8 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testAddTestCase() {
-		fail("Not yet implemented");
+		FailingTestList failures = new FailingTestList();
+		assertThrows(IllegalArgumentException.class, () -> failures.addTestCase(null));
 	}
 
 	/**
@@ -59,7 +40,9 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testRemoveTestCase() {
-		fail("Not yet implemented");
+		TestPlan plan1 = new TestPlan("Plan");
+		assertThrows(IndexOutOfBoundsException.class, () -> plan1.removeTestCase(-1));
+		assertThrows(IndexOutOfBoundsException.class, () -> plan1.removeTestCase(1));
 	}
 
 	/**
@@ -67,7 +50,23 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testGetNumberOfFailingTests() {
-		fail("Not yet implemented");
+		TestPlan plan = new TestPlan("Plan");
+		TestCase case1 = new TestCase("ID1", "Type1", "Description1", "Expected1");
+		TestCase case2 = new TestCase("ID2", "Type2", "Description2", "Expected2");
+		TestCase case3 = new TestCase("ID3", "Type3", "Description3", "Expected3");
+		TestCase case4 = new TestCase("ID4", "Type4", "Description4", "Expected4");
+		plan.addTestCase(case1);
+		plan.addTestCase(case2);
+		plan.addTestCase(case3);
+		plan.addTestCase(case4);
+		plan.addTestResult(0, false, "Failed");
+		plan.addTestResult(1, false, "Failed");
+		plan.addTestResult(2, false, "Failed");
+		plan.addTestResult(3, false, "Failed");
+		assertEquals(4, plan.getNumberOfFailingTests());
+		plan.addTestResult(1, true, "Passes");
+		plan.addTestResult(2, true, "Passes");
+		assertEquals(2, plan.getNumberOfFailingTests());
 	}
 
 	/**
@@ -75,15 +74,13 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testAddTestResult() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for AbstractTestPlan.getTestCasesAsArray
-	 */
-	@Test
-	void testGetTestCasesAsArray() {
-		fail("Not yet implemented");
+		TestPlan plan = new TestPlan("Plan");
+		TestCase case1 = new TestCase("ID1", "Type1", "Description1", "Expected1");
+		plan.addTestCase(case1);
+		assertThrows(IndexOutOfBoundsException.class, () -> plan.addTestResult(-1, true, "Passes"));
+		assertThrows(IndexOutOfBoundsException.class, () -> plan.addTestResult(1, true, "Passes"));
+		assertThrows(IllegalArgumentException.class, () -> plan.addTestResult(0, true, null));
+		assertThrows(IllegalArgumentException.class, () -> plan.addTestResult(0, true, ""));
 	}
 
 	/**
@@ -91,15 +88,11 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testGetTestCase() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for AbstractTestPlan.getTestCases
-	 */
-	@Test
-	void testGetTestCases() {
-		fail("Not yet implemented");
+		TestPlan plan = new TestPlan("Plan");
+		TestCase case1 = new TestCase("ID1", "Type1", "Description1", "Expected1");
+		plan.addTestCase(case1);
+		assertThrows(IndexOutOfBoundsException.class, () -> plan.getTestCase(-1));
+		assertThrows(IndexOutOfBoundsException.class, () -> plan.getTestCase(1));
 	}
 
 	/**
@@ -107,7 +100,16 @@ class AbstractTestPlanTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		fail("Not yet implemented");
+		TestPlan plan = new TestPlan("Plan");
+		plan.addTestCase(new TestCase("ID1", "Type1", "Description1", "Expected1"));
+		TestPlan plan1 = new TestPlan("AnotherPlan");
+		TestPlan plan2 = new TestPlan("Plan");
+		TestCase case1 = new TestCase("ID1", "Type1", "Description1", "Expected1");
+		assertFalse(plan.equals(plan1));
+		assertFalse(plan.equals(null));
+		assertTrue(plan.equals(plan));
+		assertTrue(plan.equals(plan2));
+		
 	}
 
 }

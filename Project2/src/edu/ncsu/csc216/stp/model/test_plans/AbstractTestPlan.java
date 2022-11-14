@@ -64,9 +64,6 @@ public abstract class AbstractTestPlan {
 	 * @throws IllegalArgumentException if t cannot be added
 	 */
 	public void addTestCase(TestCase t) {
-		if (t == null ) {
-			throw new IllegalArgumentException("Invalid element.");
-		}
 		testCases.add(t);
 	}
 	
@@ -77,9 +74,6 @@ public abstract class AbstractTestPlan {
 	 * @throws IndexOutOfBoundsException if idx is out of bounds
 	 */
 	public TestCase removeTestCase(int idx) {
-		if (idx < 0 || idx >= testCases.size()) {
-			throw new IndexOutOfBoundsException("Invalid index.");
-		}
 		return testCases.remove(idx);
 	}
 
@@ -103,16 +97,9 @@ public abstract class AbstractTestPlan {
 	 * @param passing a boolean representing whether or not the TestResult is passing
 	 * @param actualResult the actualResults of the testResult
 	 * @throws IllegalArgumentException if actualResult is null or an empty string
-	 * @throws NullPointerException if the element to add is null TODO
 	 * @throws IndexOutOfBoundsException if idx is not in bounds
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
-		if (actualResult == null || "".equals(actualResult)) {
-			throw new IllegalArgumentException("Invalid TestResult.");
-		}
-		if (idx < 0 || idx >= testCases.size()) {
-			throw new IndexOutOfBoundsException("Invalid index");
-		}
 		testCases.get(idx).addTestResult(passing, actualResult);
 	}
 	

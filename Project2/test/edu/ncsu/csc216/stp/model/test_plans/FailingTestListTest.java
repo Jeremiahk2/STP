@@ -40,14 +40,14 @@ class FailingTestListTest {
 		TestCase case2 = new TestCase("ID2", "Type2", "Description2", "Expected2");
 		TestCase case3 = new TestCase("ID3", "Type3", "Description3", "Expected3");
 		TestCase case4 = new TestCase("ID4", "Type4", "Description4", "Expected4");
-		case1.addTestResult(false, "Failed");
-		case2.addTestResult(false, "Failed");
-		case3.addTestResult(false, "Failed");
-		case4.addTestResult(false, "Failed");
 		plan.addTestCase(case1);
 		plan.addTestCase(case2);
 		plan.addTestCase(case3);
 		plan.addTestCase(case4);
+		plan.addTestResult(0, false, "Failed");
+		plan.addTestResult(1, false, "Failed");
+		plan.addTestResult(2, false, "Failed");
+		plan.addTestResult(3, false, "Failed");
 		plan.getTestCase(0).setTestPlan(new TestPlan("Plan1"));
 		plan.getTestCase(1).setTestPlan(new TestPlan("Plan2"));
 		plan.getTestCase(2).setTestPlan(new TestPlan("Plan3"));
