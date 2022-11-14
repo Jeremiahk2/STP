@@ -3,11 +3,14 @@
  */
 package edu.ncsu.csc216.stp.model.io;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.stp.model.test_plans.AbstractTestPlan;
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.tests.TestResult;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
 import edu.ncsu.csc216.stp.model.util.SortedList;
 
@@ -37,10 +40,15 @@ public class TestPlanReader {
 		if (!exists) {
 			throw new IllegalArgumentException("Unable to load file.");
 		}
-		String contents = file.toString();
+		//String contents = file.toString();
 		ISortedList<TestPlan> plans = new SortedList<TestPlan>();
 		
-		Scanner processor = new Scanner(contents);
+		Scanner processor;
+		try {
+			processor = new Scanner(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			throw new IllegalArgumentException("Unable to load file");
+		}
 		processor.useDelimiter("\\r?\\n?[!]");
 		while (processor.hasNext()) {
 			TestPlan newTestPlan = processTestPlan(processor.next());
@@ -59,6 +67,8 @@ public class TestPlanReader {
 	 */
 	private static TestPlan processTestPlan(String testPlan) {
 		Scanner testPlanProcessor = new Scanner(testPlan);
+//		testPlanProcessor.useDelimiter("\n");
+//		String planName = testPlanProcessor.next();
 		String planName = testPlanProcessor.nextLine().substring(1);
 		testPlanProcessor.useDelimiter("\\r?\\n?[#]");
 		
@@ -79,20 +89,32 @@ public class TestPlanReader {
 	 */
 	private static TestCase processTest(AbstractTestPlan plan, String caseString) {
 		Scanner testProcessor = new Scanner(caseString);
-		String testCaseID = testProcessor.next();
-		String testType = testProcessor.next();
+		testProcessor.useDelimiter(",");
+		String testCaseID = testProcessor.next().trim();
+		testProcessor.useDelimiter("\n");
+		String testType = testProcessor.next().trim().substring(1);
 		testProcessor.useDelimiter("\\r?\\n?[-]");
 		
 		Scanner descriptionProcessor = new Scanner(testProcessor.next());
 		descriptionProcessor.useDelimiter("\\r?\\n?[*]");
-		String testDescription = descriptionProcessor.next();
-		String expectedResults = descriptionProcessor.next();
+		String testDescription = descriptionProcessor.next();//.trim();
+		String expectedResults = descriptionProcessor.next();//.trim();
 		
 		TestCase newTestCase = new TestCase(testCaseID, testType, testDescription, expectedResults);
 		while (testProcessor.hasNext()) {
-			Scanner resultReader = new Scanner(testProcessor.next());
-			newTestCase.addTestResult(resultReader.nextBoolean(), resultReader.next());
-			resultReader.close();
+			//Scanner resultReader = new Scanner(testProcessor.next());
+			//
+			String results = testProcessor.next();
+			String bool = results.substring(1, 5);
+			if (bool.equals(TestResult.PASS)) {
+				newTestCase.addTestResult(true, results.substring(7));
+			}
+			else {
+				newTestCase.addTestResult(false, results.substring(7));
+			}
+			//
+			//newTestCase.addTestResult(resultReader.nextBoolean(), resultReader.next());
+			//resultReader.close();
 		}
 		descriptionProcessor.close();
 		testProcessor.close();

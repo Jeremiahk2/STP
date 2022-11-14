@@ -3,8 +3,10 @@
  */
 package edu.ncsu.csc216.stp.model.io;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
@@ -29,16 +31,17 @@ public class TestPlanWriter {
 	 * @param plans the list of plans to be written in the file
 	 */
 	public static void writeTestPlanFile(File file, ISortedList<TestPlan> plans) {
+		PrintWriter fileWriter;
 		try {
-			PrintStream fileWriter = new PrintStream(file);
+			fileWriter = new PrintWriter(new FileOutputStream(file));
 			
 			for (int i = 0; i < plans.size(); i++) {
 				fileWriter.println("! " + plans.get(i).getTestPlanName());
 				for (int j = 0; j < plans.get(i).getTestCases().size(); j++) {
 					if (i == plans.size() - 1 && j == plans.get(i).getTestCases().size() - 1 ) {
-						fileWriter.print(plans.get(i).getTestCases().toString());
+						fileWriter.print(plans.get(i).getTestCase(j).toString());   //Logs do not have a toString, you'll need to edit testCases toString to cycle through actualResults
 					} else {
-						fileWriter.println(plans.get(i).getTestCases().toString());
+						fileWriter.println(plans.get(i).getTestCase(j).toString()); //same problem here
 					}
 				}
 			}
