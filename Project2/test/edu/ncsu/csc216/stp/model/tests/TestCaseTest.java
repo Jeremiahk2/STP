@@ -50,11 +50,11 @@ class TestCaseTest {
 		TestCase case1 = new TestCase("TestCaseId", "TestType", "TestDescription", "ExpectedResults");
 		assertDoesNotThrow(() -> case1.addTestResult(true, "ActualResult"));
 		
-		assertEquals("- PASS: ActualResult\n", case1.getActualResultsLog());
+		assertEquals("- PASS: ActualResult", case1.getActualResultsLog());
 		
 		assertDoesNotThrow(() -> case1.addTestResult(false, "BananaResults"));
 		
-		assertEquals("- PASS: ActualResult\n- FAIL: BananaResults\n", case1.getActualResultsLog());
+		assertEquals("- PASS: ActualResult\n- FAIL: BananaResults", case1.getActualResultsLog());
 		
 		assertThrows(IllegalArgumentException.class, () -> case1.addTestResult(false, null));
 		
