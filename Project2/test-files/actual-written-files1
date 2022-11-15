@@ -1,16 +1,16 @@
 ! PackScheduler
 # test0,Invalid
 * descriptionexpected results
-with multiple linesedu.ncsu.csc216.stp.model.util.Log@1568159
+with multiple linesedu.ncsu.csc216.stp.model.util.Log@53dbe163
 # test1,Equivalence Class
-* descriptionexpected resultsedu.ncsu.csc216.stp.model.util.Log@4fcee388
+* descriptionexpected resultsedu.ncsu.csc216.stp.model.util.Log@db57326
 ! WolfScheduler
 # test1,Equivalence Class
 * description
  with multiple linesexpected results
-with multiple linesedu.ncsu.csc216.stp.model.util.Log@6f80fafe
+with multiple linesedu.ncsu.csc216.stp.model.util.Log@34a875b3
 # test2,Boundary Value
-* descriptionexpected resultsedu.ncsu.csc216.stp.model.util.Log@3af17be2
+* descriptionexpected resultsedu.ncsu.csc216.stp.model.util.Log@4748a0f9
 # test3,Requirements
 * description
-on multiple linesexpected resultsedu.ncsu.csc216.stp.model.util.Log@f9879ac
+on multiple linesexpected resultsedu.ncsu.csc216.stp.model.util.Log@4b14918a
