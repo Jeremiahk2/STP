@@ -164,9 +164,9 @@ public class TestCase {
  		String returnString = "";
  		for (int i = 0; i < testResults.size(); i++) {
  			returnString += "- " + testResults.get(i).toString();
- 			if (i != testResults.size() - 1) {    
+ 			//if (i != testResults.size() - 1) {    
  				returnString += "\n";
- 			}
+ 			//}
  		}
  		return returnString;
  	}
