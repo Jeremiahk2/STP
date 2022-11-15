@@ -40,7 +40,7 @@ public class TestPlanWriter {
 					if (i == plans.size() - 1 && j == plans.get(i).getTestCases().size() - 1 ) {
 						fileWriter.print(plans.get(i).getTestCase(j).toString());   //Logs do not have a toString, you'll need to edit testCases toString to cycle through actualResults
 					} else {
-						fileWriter.println(plans.get(i).getTestCase(j).toString()); //same problem here
+						fileWriter.print(plans.get(i).getTestCase(j).toString()); //same problem here
 					}
 				}
 			}

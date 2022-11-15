@@ -6,8 +6,8 @@ package edu.ncsu.csc216.stp.model.io;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
-//import java.io.IOException;
-//import java.util.Scanner;
+import java.io.IOException;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,11 +29,11 @@ class TestPlanWriterTest {
 	@Test
 	void testWriteTestPlanFile() {
 		TestPlan wolfScheduler = new TestPlan("WolfScheduler");
-		TestCase case1 = new TestCase("test1", "Equivalence Class", "description\n with multiple lines", "expected results\nwith multiple lines");
+		TestCase case1 = new TestCase("test1", "Equivalence Class", "description\nwith multiple lines", "expected results\nwith multiple lines");
 		wolfScheduler.addTestCase(case1);
 		wolfScheduler.addTestResult(0, true, "actual results");
 		wolfScheduler.addTestResult(0,  false, "actual results on\nmultiple lines");
-		wolfScheduler.addTestResult(0, false, "actual results\non three\nlines");
+		wolfScheduler.addTestResult(0, true, "actual results\non three\nlines");
 		
 		TestCase case2 = new TestCase("test2", "Boundary Value", "description", "expected results");
 		wolfScheduler.addTestCase(case2);
@@ -60,30 +60,29 @@ class TestPlanWriterTest {
 		
 		assertDoesNotThrow(() -> TestPlanWriter.writeTestPlanFile(new File("test-files/actual-written-files1"), list));
 		
-		//commented out to deal with ArrayList being found when not present
-		//checkFiles("test-files/expected-written-files1", "test-files/actual-written-files1");
+		checkFiles("test-files/expected-written-files1", "test-files/actual-written-files1");
 		
 	}
 
 	
 	
-//	/**
-//	 * Helper method to determine if two files match each other
-//	 * @param expFile the file that has the expected results
-//	 * @param actFile the actual file due to the method
-//	 */
-//	private void checkFiles(String expFile, String actFile) {
-//		try (Scanner expScanner = new Scanner(new File(expFile));
-//			 Scanner actScanner = new Scanner(new File(actFile));) {
-//			
-//			while (expScanner.hasNextLine()) {
-//				assertEquals(expScanner.nextLine(), actScanner.nextLine());
-//			}
-//			
-//			expScanner.close();
-//			actScanner.close();
-//		} catch (IOException e) {
-//			fail("Error reading files.");
-//		}
-//	}
+	/**
+	 * Helper method to determine if two files match each other
+	 * @param expFile the file that has the expected results
+	 * @param actFile the actual file due to the method
+	 */
+	private void checkFiles(String expFile, String actFile) {
+		try (Scanner expScanner = new Scanner(new File(expFile));
+				Scanner actScanner = new Scanner(new File(actFile));) {
+
+			while (expScanner.hasNextLine()) {
+				assertEquals(expScanner.nextLine(), actScanner.nextLine());
+			}
+
+			expScanner.close();
+			actScanner.close();
+		} catch (IOException e) {
+			fail("Error reading files.");
+		}
+	}
 }
