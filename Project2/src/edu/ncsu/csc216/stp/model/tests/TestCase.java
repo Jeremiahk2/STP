@@ -218,7 +218,12 @@ public class TestCase {
  	public String toString() {
  		String actualResults = "";
  		for (int i = 0; i < testResults.size(); i++) {
- 			actualResults += "- " + testResults.get(i) + "\n";
+ 			if (i != testResults.size() - 1) {
+ 				actualResults += "- " + testResults.get(i) + "\n";
+ 			}
+ 			else {
+ 				actualResults += "- " + testResults.get(i);
+ 			}
  		}
  		return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + "\n* " + expectedResults + "\n" + actualResults;
  	}
