@@ -40,37 +40,7 @@ class TestCaseTest {
 	}
 	
 
-	/**
-	 * Test method for TestCase.getTestCaseId
-	 */
-	@Test
-	void testGetTestCaseId() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for TestCase.getTestType
-	 */
-	@Test
-	void testGetTestType() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for TestCase.getTestDescription
-	 */
-	@Test
-	void testGetTestDescription() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for TestCase.getExpectedResults
-	 */
-	@Test
-	void testGetExpectedResults() {
-		fail("Not yet implemented");
-	}
+	
 
 	/**
 	 * Test method for TestCase.addTestResult
@@ -141,15 +111,6 @@ class TestCaseTest {
 		assertEquals(badPlan, case1.getTestPlan());
 		
 	}
-
-	/**
-	 * Test method for TestCase.getTestPlan
-	 */
-	@Test
-	void testGetTestPlan() {
-		fail("Not yet implemented");
-	}
-
 	/**
 	 * Test method for TestCase.toString
 	 */

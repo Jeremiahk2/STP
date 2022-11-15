@@ -104,9 +104,9 @@ class AbstractTestPlanTest {
 		plan.addTestCase(new TestCase("ID1", "Type1", "Description1", "Expected1"));
 		TestPlan plan1 = new TestPlan("AnotherPlan");
 		TestPlan plan2 = new TestPlan("Plan");
-		TestCase case1 = new TestCase("ID1", "Type1", "Description1", "Expected1");
+		TestPlan badPlan = null;
 		assertFalse(plan.equals(plan1));
-		assertFalse(plan.equals(null));
+		assertFalse(plan.equals(badPlan));
 		assertTrue(plan.equals(plan));
 		assertTrue(plan.equals(plan2));
 		
