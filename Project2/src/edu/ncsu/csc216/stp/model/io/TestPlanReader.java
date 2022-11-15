@@ -97,8 +97,8 @@ public class TestPlanReader {
 		
 		Scanner descriptionProcessor = new Scanner(testProcessor.next());
 		descriptionProcessor.useDelimiter("\\r?\\n?[*]");
-		String testDescription = descriptionProcessor.next(); //.trim();
-		String expectedResults = descriptionProcessor.next(); //.trim();
+		String testDescription = descriptionProcessor.next().trim();
+		String expectedResults = descriptionProcessor.next().trim();
 		
 		TestCase newTestCase = new TestCase(testCaseID, testType, testDescription, expectedResults);
 		while (testProcessor.hasNext()) {
