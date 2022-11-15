@@ -6,8 +6,8 @@ package edu.ncsu.csc216.stp.model.io;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
+//import java.io.IOException;
+//import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
@@ -67,23 +67,23 @@ class TestPlanWriterTest {
 
 	
 	
-	/**
-	 * Helper method to determine if two files match each other
-	 * @param expFile the file that has the expected results
-	 * @param actFile the actual file due to the method
-	 */
-	private void checkFiles(String expFile, String actFile) {
-		try (Scanner expScanner = new Scanner(new File(expFile));
-			 Scanner actScanner = new Scanner(new File(actFile));) {
-			
-			while (expScanner.hasNextLine()) {
-				assertEquals(expScanner.nextLine(), actScanner.nextLine());
-			}
-			
-			expScanner.close();
-			actScanner.close();
-		} catch (IOException e) {
-			fail("Error reading files.");
-		}
-	}
+//	/**
+//	 * Helper method to determine if two files match each other
+//	 * @param expFile the file that has the expected results
+//	 * @param actFile the actual file due to the method
+//	 */
+//	private void checkFiles(String expFile, String actFile) {
+//		try (Scanner expScanner = new Scanner(new File(expFile));
+//			 Scanner actScanner = new Scanner(new File(actFile));) {
+//			
+//			while (expScanner.hasNextLine()) {
+//				assertEquals(expScanner.nextLine(), actScanner.nextLine());
+//			}
+//			
+//			expScanner.close();
+//			actScanner.close();
+//		} catch (IOException e) {
+//			fail("Error reading files.");
+//		}
+//	}
 }
