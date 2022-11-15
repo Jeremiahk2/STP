@@ -36,32 +36,35 @@ class TestPlanReaderTest {
 		assertAll("Checks information from read file",
 				() -> assertEquals("test1", plan2.getTestCase(0).getTestCaseId()),
 				() -> assertEquals("Equivalence Class", plan2.getTestCase(0).getTestType()),
-//				() -> assertEquals("description\nwith multiple lines", plan2.getTestCase(0).getTestDescription()),
-//				() -> assertEquals("expected results\nwith multiple lines", plan2.getTestCase(0).getExpectedResults()),
-//				() -> assertEquals("- PASS: actual results\n"
-//						+ "- FAIL: actual results on\nmutliple lines\n"
-//						+ "- PASS: actual results\non three\nlines", plan2.getTestCase(0).getActualResultsLog()),
+				() -> assertEquals("description\r\nwith multiple lines", plan2.getTestCase(0).getTestDescription()),
+				() -> assertEquals("expected results\r\nwith multiple lines", plan2.getTestCase(0).getExpectedResults()),
+				() -> assertEquals("- PASS: actual results\n"
+						+ "- FAIL: actual results on\r\n"
+						+ "multiple lines\n"
+						+ "- PASS: actual results\r\n"
+						+ "on three\r\n"
+						+ "lines\n", plan2.getTestCase(0).getActualResultsLog()),
 				() -> assertEquals("test2", plan2.getTestCase(1).getTestCaseId()),
 				() -> assertEquals("Boundary Value", plan2.getTestCase(1).getTestType()),
 				() -> assertEquals("description", plan2.getTestCase(1).getTestDescription()),
 				() -> assertEquals("expected results", plan2.getTestCase(1).getExpectedResults()),
 				() -> assertEquals("test3", plan2.getTestCase(2).getTestCaseId()),
 				() -> assertEquals("Requirements", plan2.getTestCase(2).getTestType()),
-				//() -> assertEquals("description\non multiple lines", plan2.getTestCase(2).getTestDescription()),
+				() -> assertEquals("description\r\non multiple lines", plan2.getTestCase(2).getTestDescription()),
 				() -> assertEquals("expected results", plan2.getTestCase(2).getExpectedResults()),
-				//() -> assertEquals("- FAIL: actual results", plan2.getTestCase(2).getActualResultsLog()),
-				//second project
+				() -> assertEquals("- FAIL: actual results\n", plan2.getTestCase(2).getActualResultsLog()),
+//				second project
 				() -> assertEquals("PackScheduler", plan1.getTestPlanName()),
 				() -> assertEquals("test0", plan1.getTestCase(0).getTestCaseId()),
 				() -> assertEquals("Invalid", plan1.getTestCase(0).getTestType()),
 				() -> assertEquals("description", plan1.getTestCase(0).getTestDescription()),
-				//() -> assertEquals("expected results\nwith multiple lines", plan1.getTestCase(0).getExpectedResults()),
-				//() -> assertEquals("- PASS: actual results\n- FAIL: actual results", plan1.getTestCase(0).getActualResultsLog()),
+				() -> assertEquals("expected results\r\nwith multiple lines", plan1.getTestCase(0).getExpectedResults()),
+				() -> assertEquals("- PASS: actual results\n- FAIL: actual results\n", plan1.getTestCase(0).getActualResultsLog()),
 				() -> assertEquals("test1", plan1.getTestCase(1).getTestCaseId()),
 				() -> assertEquals("Equivalence Class", plan1.getTestCase(1).getTestType()),
 				() -> assertEquals("description", plan1.getTestCase(1).getTestDescription()),
-				() -> assertEquals("expected results", plan1.getTestCase(1).getExpectedResults())
-				//() -> assertEquals("- PASS: actual results", plan1.getTestCase(1).getActualResultsLog())
+				() -> assertEquals("expected results", plan1.getTestCase(1).getExpectedResults()),
+				() -> assertEquals("- PASS: actual results\n", plan1.getTestCase(1).getActualResultsLog())
 				);
 		
 		
