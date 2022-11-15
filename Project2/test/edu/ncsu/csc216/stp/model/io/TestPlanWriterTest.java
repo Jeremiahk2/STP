@@ -56,6 +56,7 @@ class TestPlanWriterTest {
 		
 		list.add(wolfScheduler);
 		list.add(packScheduler);
+		assertEquals(2, list.size());
 		
 		TestPlanWriter.writeTestPlanFile(new File("test-files/actual-written-files1"), list);
 		
