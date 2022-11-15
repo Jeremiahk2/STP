@@ -225,6 +225,12 @@ public class TestCase {
  				actualResults += "- " + testResults.get(i);
  			}
  		}
- 		return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + "\n* " + expectedResults + "\n" + actualResults;
+ 		if (testResults.size() > 0) {
+ 			return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + "\n* " + expectedResults + "\n" + actualResults;
+ 		}
+ 		else {
+ 			return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + "\n* " + expectedResults + actualResults;
+ 		}
+ 		//return "# " + testCaseId + "," + testType + "\n" + "* " + testDescription + "\n* " + expectedResults + "\n" + actualResults;
  	}
 }

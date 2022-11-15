@@ -38,9 +38,9 @@ public class TestPlanWriter {
 				fileWriter.println("! " + plans.get(i).getTestPlanName());
 				for (int j = 0; j < plans.get(i).getTestCases().size(); j++) {
 					if (i == plans.size() - 1 && j == plans.get(i).getTestCases().size() - 1 ) {
-						fileWriter.print(plans.get(i).getTestCase(j).toString());   //Logs do not have a toString, you'll need to edit testCases toString to cycle through actualResults
+						fileWriter.print(plans.get(i).getTestCase(j).toString().trim());   //Logs do not have a toString, you'll need to edit testCases toString to cycle through actualResults
 					} else {
-						fileWriter.print(plans.get(i).getTestCase(j).toString()); //same problem here
+						fileWriter.println(plans.get(i).getTestCase(j).toString()); //same problem here
 					}
 				}
 			}
