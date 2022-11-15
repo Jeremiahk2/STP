@@ -74,9 +74,12 @@ public class TestPlanManager {
 	 */
 	public void addTestPlan(String testPlanName) {
 		if (testPlanName == null || "".equals(testPlanName)) {
-			throw new IllegalArgumentException("Failing Tests.");
+			throw new IllegalArgumentException("Invalid name.");
 		}
-		testPlans.add(new TestPlan(testPlanName));
+		TestPlan newTestPlan = new TestPlan(testPlanName);
+		testPlans.add(newTestPlan);
+		setCurrentTestPlan(testPlanName);
+		this.isChanged = true;
 	}
 	
 	/**
@@ -151,7 +154,7 @@ public class TestPlanManager {
 	 */
 	public void removeTestPlan() {
 		if (currentTestPlan == failingTestList) {
-			throw new IllegalArgumentException("Cannot delete test plan.");
+			throw new IllegalArgumentException("The Failing Tests list may not be deleted.");
 		}
 		int idx = 0;
 		for (int i = 0; i < testPlans.size(); i++) {
@@ -168,9 +171,6 @@ public class TestPlanManager {
 	 * @param t desired TestCase to be added to the TestPlan
 	 */
 	public void addTestCase(TestCase t) {
-		if (t == null) {
-			throw new IllegalArgumentException("Null test case.");
-		}
 		currentTestPlan.addTestCase(t);
 	}
 	

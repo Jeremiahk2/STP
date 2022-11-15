@@ -7,9 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import edu.ncsu.csc216.stp.model.tests.TestCase;
+
 /**
  * Tests TestPlanManager class
  * @author Jeremiah Knizley
+ * @author Ryan McPhee
  *
  */
 class TestPlanManagerTest {
@@ -19,7 +22,11 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testTestPlanManager() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		
 	}
 
 	/**
@@ -43,7 +50,12 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testIsChanged() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		
+		assertFalse(test.isChanged());
 	}
 
 	/**
@@ -51,7 +63,17 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testAddTestPlan() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		
+		test.addTestPlan("Sample Test Plan");
+		assertAll("TestPlanManager",
+				() -> assertEquals(1, test.getTestPlanNames().length),
+				() -> assertEquals("Sample Test Plan", test.getCurrentTestPlan().getTestPlanName())
+				);
+		
 	}
 
 	/**
@@ -59,7 +81,24 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testGetTestPlanNames() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		test.addTestPlan("Sample Test Plan1");
+		test.addTestPlan("Sample Test Plan2");
+		test.addTestPlan("Sample Test Plan3");
+		test.addTestPlan("Sample Test Plan4");
+		test.addTestPlan("Sample Test Plan5");
+		String[] testPlanNames = test.getTestPlanNames();
+		
+		assertAll("TestPlanNames",
+				() -> assertEquals("Sample Test Plan1", testPlanNames[0]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames[1]),
+				() -> assertEquals("Sample Test Plan3", testPlanNames[2]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames[3]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames[4]));
+		
 	}
 
 	/**
@@ -67,16 +106,42 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testSetCurrentTestPlan() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		test.addTestPlan("Sample Test Plan1");
+		test.addTestPlan("Sample Test Plan2");
+		test.addTestPlan("Sample Test Plan3");
+		test.addTestPlan("Sample Test Plan4");
+		test.addTestPlan("Sample Test Plan5");
+		
+		test.setCurrentTestPlan("Sample Test Plan1");
+		assertEquals("Sample Test Plan1", test.getCurrentTestPlan().getTestPlanName());
+		
+		test.setCurrentTestPlan("Sample Test Plan2");
+		assertEquals("Sample Test Plan2", test.getCurrentTestPlan().getTestPlanName());
+		
+		test.setCurrentTestPlan("Sample Test Plan3");
+		assertEquals("Sample Test Plan3", test.getCurrentTestPlan().getTestPlanName());
+		
+		test.setCurrentTestPlan("Sample Test Plan4");
+		assertEquals("Sample Test Plan4", test.getCurrentTestPlan().getTestPlanName());
+		
+		test.setCurrentTestPlan("Sample Test Plan5");
+		assertEquals("Sample Test Plan5", test.getCurrentTestPlan().getTestPlanName());
+		
+		test.setCurrentTestPlan("Sample Test Plan6");
+		assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName());
 	}
 
-	/**
-	 * Test method for TestPlanManager.getCurrentTestPlan
-	 */
-	@Test
-	void testGetCurrentTestPlan() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestPlanManager.getCurrentTestPlan
+//	 */
+//	@Test
+//	void testGetCurrentTestPlan() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for TestPlanManager.editTestPlan
@@ -91,7 +156,37 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testRemoveTestPlan() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		test.addTestPlan("Sample Test Plan1");
+		test.addTestPlan("Sample Test Plan2");
+		test.addTestPlan("Sample Test Plan3");
+		test.addTestPlan("Sample Test Plan4");
+		test.addTestPlan("Sample Test Plan5");
+		String[] testPlanNames = test.getTestPlanNames();
+		
+		assertAll("TestPlanNames",
+				() -> assertEquals("Sample Test Plan1", testPlanNames[0]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames[1]),
+				() -> assertEquals("Sample Test Plan3", testPlanNames[2]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames[3]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames[4]));
+		
+		test.setCurrentTestPlan("Sample Test Plan3");
+		test.removeTestPlan();
+		String[] testPlanNames2 = test.getTestPlanNames();
+		assertAll("TestPlanNames",
+				() -> assertEquals(4, testPlanNames2.length),
+				() -> assertEquals("Sample Test Plan1", testPlanNames2[0]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames2[1]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames2[2]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames2[3]));
+		
+		test.setCurrentTestPlan("Failing Tests");
+		Exception e1 = assertThrows(IllegalArgumentException.class, () -> test.removeTestPlan());
+		assertEquals("The Failing Tests list may not be deleted.", e1.getMessage());
 	}
 
 	/**
@@ -99,7 +194,21 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testAddTestCase() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		test.addTestPlan("Sample Test Plan1");
+		
+		TestCase testTestCase = new TestCase("SampleID", "SampleType", "SampleDescription", "SampleExpected");
+		test.addTestCase(testTestCase);
+		String[][] testCaseArray = test.getCurrentTestPlan().getTestCasesAsArray();
+		
+		assertAll("TestCase",
+				() -> assertEquals(1, testCaseArray.length),
+				() -> assertEquals("SampleID", testCaseArray[0][0]),
+				() -> assertEquals("SampleType", testCaseArray[0][1]),
+				() -> assertEquals("FAIL", testCaseArray[0][2]));	
 	}
 
 	/**
@@ -115,7 +224,20 @@ class TestPlanManagerTest {
 	 */
 	@Test
 	void testClearTestPlans() {
-		fail("Not yet implemented");
+		TestPlanManager test = new TestPlanManager();
+		assertAll("TestPlanManager",
+				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
+		test.addTestPlan("Sample Test Plan1");
+		test.addTestPlan("Sample Test Plan2");
+		test.addTestPlan("Sample Test Plan3");
+		test.addTestPlan("Sample Test Plan4");
+		test.addTestPlan("Sample Test Plan5");
+		String[] testPlanNames = test.getTestPlanNames();
+		assertEquals(5, testPlanNames.length);
+		test.clearTestPlans();
+		String[] testPlanNames2 = test.getTestPlanNames();
+		assertEquals(0, testPlanNames2.length);
 	}
 
 }
