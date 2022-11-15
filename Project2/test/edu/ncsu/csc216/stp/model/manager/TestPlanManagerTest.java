@@ -29,21 +29,21 @@ class TestPlanManagerTest {
 		
 	}
 
-	/**
-	 * Test method for TestPlanManager.loadTestPlans
-	 */
-	@Test
-	void testLoadTestPlans() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestPlanManager.loadTestPlans
+//	 */
+//	@Test
+//	void testLoadTestPlans() {
+//		fail("Not yet implemented");
+//	}
 
-	/**
-	 * Test method for Test method for TestPlanManager.saveTestPlans
-	 */
-	@Test
-	void testSaveTestPlans() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for Test method for TestPlanManager.saveTestPlans
+//	 */
+//	@Test
+//	void testSaveTestPlans() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for TestPlanManager.isChanged
@@ -143,13 +143,13 @@ class TestPlanManagerTest {
 //		fail("Not yet implemented");
 //	}
 
-	/**
-	 * Test method for TestPlanManager.editTestPlan
-	 */
-	@Test
-	void testEditTestPlan() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestPlanManager.editTestPlan
+//	 */
+//	@Test
+//	void testEditTestPlan() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for TestPlanManager.removeTestPlan
@@ -211,13 +211,13 @@ class TestPlanManagerTest {
 				() -> assertEquals("FAIL", testCaseArray[0][2]));	
 	}
 
-	/**
-	 * Test method for TestPlanManager.addTestResult
-	 */
-	@Test
-	void testAddTestResult() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestPlanManager.addTestResult
+//	 */
+//	@Test
+//	void testAddTestResult() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for TestPlanManager.clearTestPlans

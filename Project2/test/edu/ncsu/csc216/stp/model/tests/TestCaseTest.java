@@ -67,21 +67,21 @@ class TestCaseTest {
 		assertEquals(TestResult.PASS, case1.getStatus());
 	}
 
-	/**
-	 * Test method for TestCase.getStatus
-	 */
-	@Test
-	void testGetStatus() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestCase.getStatus
+//	 */
+//	@Test
+//	void testGetStatus() {
+//		fail("Not yet implemented");
+//	}
 
-	/**
-	 * Test method for TestCase.getActualResultsLog
-	 */
-	@Test
-	void testGetActualResultsLog() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for TestCase.getActualResultsLog
+//	 */
+//	@Test
+//	void testGetActualResultsLog() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for TestCase.isTestCasePassing
@@ -111,15 +111,15 @@ class TestCaseTest {
 		assertEquals(badPlan, case1.getTestPlan());
 		
 	}
-	/**
-	 * Test method for TestCase.toString
-	 */
-	@Test
-	void testToString() {
-		//Should be covered by TestPlanWriter
-		//TODO: Verify
-		fail("Not yet implemented");
-		
-	}
+//	/**
+//	 * Test method for TestCase.toString
+//	 */
+//	@Test
+//	void testToString() {
+//		//Should be covered by TestPlanWriter
+//		//TODO: Verify
+//		fail("Not yet implemented");
+//		
+//	}
 
 }
