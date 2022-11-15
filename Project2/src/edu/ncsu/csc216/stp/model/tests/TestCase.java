@@ -164,10 +164,9 @@ public class TestCase {
  		String returnString = "";
  		for (int i = 0; i < testResults.size(); i++) {
  			returnString += "- " + testResults.get(i).toString();
- 			//if (i != testResults.size() - 1) {    This if statement may be required later on, if it turns out single lines don't have a newline character.
+ 			if (i != testResults.size() - 1) {    
  				returnString += "\n";
- 				//TODO: Verify
- 			//}
+ 			}
  		}
  		return returnString;
  	}

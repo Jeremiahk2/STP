@@ -107,10 +107,10 @@ public class TestPlanReader {
 			String results = testProcessor.next();
 			String bool = results.substring(1, 5);
 			if (bool.equals(TestResult.PASS)) {
-				newTestCase.addTestResult(true, results.substring(7));
+				newTestCase.addTestResult(true, results.substring(7).trim());
 			}
 			else {
-				newTestCase.addTestResult(false, results.substring(7));
+				newTestCase.addTestResult(false, results.substring(7).trim());
 			}
 			//
 			//newTestCase.addTestResult(resultReader.nextBoolean(), resultReader.next());
