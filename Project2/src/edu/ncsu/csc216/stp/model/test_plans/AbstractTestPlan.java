@@ -6,7 +6,6 @@ package edu.ncsu.csc216.stp.model.test_plans;
 import java.util.Objects;
 
 import edu.ncsu.csc216.stp.model.tests.TestCase;
-import edu.ncsu.csc216.stp.model.tests.TestResult;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
 import edu.ncsu.csc216.stp.model.util.SwapList;
 

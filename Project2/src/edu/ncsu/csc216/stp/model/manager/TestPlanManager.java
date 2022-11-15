@@ -37,6 +37,7 @@ public class TestPlanManager {
 	 */
 	public TestPlanManager() {
 		this.testPlans = new SortedList<TestPlan>();
+		this.failingTestList = new FailingTestList();
 		getFailingTests();
 		this.currentTestPlan = failingTestList;
 		isChanged = false;
@@ -132,10 +133,16 @@ public class TestPlanManager {
 	/**
 	 * Allows the user to edit the TestPlan of the given name
 	 * @param testPlanName name of the desired TestPlan to be edited
-	 * @throws IllegalArgumentException if currentTestPlan is the FailingTestList, or if testPlanName is null, empty, or equal to "Failing Tests" (case insensitive)
+	 * @throws IllegalArgumentException if currentTestPlan is the FailingTestList, or if testPlanName is null, 
+	 * empty, or equal to "Failing Tests" (case insensitive)
 	 */
 	public void editTestPlan(String testPlanName) {
-		
+		if (FailingTestList.FAILING_TEST_LIST_NAME.equals(currentTestPlan.getTestPlanName())) {
+			throw new IllegalArgumentException("Invalid test plan to edit.");
+		}
+		if (testPlanName == null || "".equals(testPlanName) || "Failing Tests".equalsIgnoreCase(testPlanName)) {
+			throw new IllegalArgumentException("Invalid test plan to edit.");
+		}
 	}
 	
 	/**
@@ -143,7 +150,17 @@ public class TestPlanManager {
 	 * @throws IllegalArgumentException if the currentTestPlan is the FailingTestList
 	 */
 	public void removeTestPlan() {
-		
+		if (currentTestPlan == failingTestList) {
+			throw new IllegalArgumentException("Cannot delete test plan.");
+		}
+		int idx = 0;
+		for (int i = 0; i < testPlans.size(); i++) {
+			if (testPlans.get(i).getTestPlanName().equals(currentTestPlan.getTestPlanName())) {
+				idx = i;
+			}
+		}
+		setCurrentTestPlan(failingTestList.getTestPlanName());
+		testPlans.remove(idx);
 	}
 	
 	/**
@@ -151,7 +168,10 @@ public class TestPlanManager {
 	 * @param t desired TestCase to be added to the TestPlan
 	 */
 	public void addTestCase(TestCase t) {
-		
+		if (t == null) {
+			throw new IllegalArgumentException("Null test case.");
+		}
+		currentTestPlan.addTestCase(t);
 	}
 	
 	/**
@@ -161,7 +181,14 @@ public class TestPlanManager {
 	 * @param actualResult desired actual result to be added to the TestCase
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
+		if (idx < 0 || idx >= currentTestPlan.getTestCases().size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (actualResult == null || "".equals(actualResult)) {
+			throw new IllegalArgumentException("Invalid actual results.");
+		}
 		
+		currentTestPlan.getTestCases().get(idx).addTestResult(passing, actualResult);
 	}
 	
 	/**
