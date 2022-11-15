@@ -105,9 +105,9 @@ class TestPlanTest {
 		assertTrue(cerce.compareTo(maxi) < 0);
 		assertTrue(cerce.compareTo(abbott) > 0);
 		
-		assertTrue(cerce.compareTo(cerce) == 0);
-		assertTrue(cerce.compareTo(cerce1) == 0);
-		assertTrue(cerce1.compareTo(cerce) == 0);
+		assertEquals(0, cerce.compareTo(cerce));
+		assertEquals(0, cerce.compareTo(cerce1));
+		assertEquals(0, cerce1.compareTo(cerce));
 		
 		assertTrue(abbott.compareTo(longAbbott) < 0);
 		assertTrue(longAbbott.compareTo(abbott) > 0);
