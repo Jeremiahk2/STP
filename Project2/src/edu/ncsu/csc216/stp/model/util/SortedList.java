@@ -83,6 +83,12 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		
 		ListNode current = front;
 		E rtnElement;
+		if (idx == 0) {
+			rtnElement = front.data;
+			front = front.next;
+			size--;
+			return rtnElement;
+		}
 		for (int i = 0; i < idx - 1; i++) {
 			current = current.next;
 		}
