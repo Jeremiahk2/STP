@@ -20,9 +20,10 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @throws IllegalArgumentException if testPlanName is the same as FailingListTest.FAILING_TEST_LIST_NAME.
 	 */
 	public TestPlan(String testPlanName) {
-		
-		//IAE should have the message "Invalid name."
 		super(testPlanName);
+		if (testPlanName.equals(FailingTestList.FAILING_TEST_LIST_NAME)) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
 	}
 	
 	/**

@@ -116,7 +116,7 @@ public abstract class AbstractTestPlan {
 	 */
 	public TestCase getTestCase(int idx) {
 		if (idx < 0 || idx >= testCases.size()) {
-			throw new IndexOutOfBoundsException("Invalid Index.");
+			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		return testCases.get(idx);
 	}
