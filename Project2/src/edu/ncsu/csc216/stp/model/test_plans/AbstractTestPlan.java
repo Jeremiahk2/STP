@@ -43,7 +43,7 @@ public abstract class AbstractTestPlan {
 	 */
 	public void setTestPlanName(String testPlanName) {
 		if (testPlanName == null || "".equals(testPlanName)) {
-			throw new IllegalArgumentException("Invalid test plan name");
+			throw new IllegalArgumentException("Invalid name.");
 		}
 		this.testPlanName = testPlanName;
 	}
@@ -116,7 +116,7 @@ public abstract class AbstractTestPlan {
 	 */
 	public TestCase getTestCase(int idx) {
 		if (idx < 0 || idx >= testCases.size()) {
-			throw new IndexOutOfBoundsException("Invalid Index");
+			throw new IndexOutOfBoundsException("Invalid Index.");
 		}
 		return testCases.get(idx);
 	}
