@@ -148,7 +148,7 @@ public abstract class AbstractTestPlan {
 		if (getClass() != obj.getClass())
 			return false;
 		AbstractTestPlan other = (AbstractTestPlan) obj;
-		return Objects.equals(testPlanName, other.testPlanName);
+		return getTestPlanName().equalsIgnoreCase(other.getTestPlanName());
 	}
 	
 	
