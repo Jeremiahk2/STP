@@ -224,8 +224,8 @@ class SwapListTest {
 		//try moving middle element to front
 		list.moveToFront(2);
 		assertEquals("Tyrande", list.get(0));
-		assertEquals("Ysera", list.get(1));
-		assertEquals("Alexstrasza", list.get(2));
+		assertEquals("Alexstrasza", list.get(1));
+		assertEquals("Ysera", list.get(2));
 		assertEquals("Anduin", list.get(3));
 		assertEquals("Varian", list.get(4));
 		assertEquals(5, list.size());
@@ -233,10 +233,10 @@ class SwapListTest {
 		//try moving back element to front
 		list.moveToFront(4);
 		assertEquals("Varian", list.get(0));
-		assertEquals("Ysera", list.get(1));
+		assertEquals("Tyrande", list.get(1));
 		assertEquals("Alexstrasza", list.get(2));
-		assertEquals("Anduin", list.get(3));
-		assertEquals("Tyrande", list.get(4));
+		assertEquals("Ysera", list.get(3));
+		assertEquals("Anduin", list.get(4));
 		assertEquals(5, list.size());
 		
 		Exception e1 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToFront(-1));
@@ -271,17 +271,17 @@ class SwapListTest {
 		list.moveToBack(2);
 		assertEquals("Thirain", list.get(0));
 		assertEquals("Wei", list.get(1));
-		assertEquals("Nia", list.get(2));
-		assertEquals("Inanna", list.get(3));
+		assertEquals("Inanna", list.get(2));
+		assertEquals("Nia", list.get(3));
 		assertEquals("Ealyn", list.get(4));
 		assertEquals(5, list.size());
 		
 		//try moving front element to back
 		list.moveToBack(0);
-		assertEquals("Ealyn", list.get(0));
-		assertEquals("Wei", list.get(1));
+		assertEquals("Wei", list.get(0));
+		assertEquals("Inanna", list.get(1));
 		assertEquals("Nia", list.get(2));
-		assertEquals("Inanna", list.get(3));
+		assertEquals("Ealyn", list.get(3));
 		assertEquals("Thirain", list.get(4));
 		assertEquals(5, list.size());
 		
@@ -290,6 +290,36 @@ class SwapListTest {
 		
 		Exception e2 = assertThrows(IndexOutOfBoundsException.class, () -> list.moveToBack(5));
 		assertEquals("Invalid index.", e2.getMessage());
+	}
+	
+	/**
+	 * Test method for SwapList.moveToBack. Matches jenkins test case
+	 */
+	@Test
+	void testMoveToBack1() {
+		SwapList<String> list = new SwapList<>();
+		assertThrows(IndexOutOfBoundsException.class, () -> list.moveToBack(0));
+		
+		list.add("apple");
+		list.add("pear");
+		list.add("banana");
+		list.add("cherry");
+		list.add("blueberries");
+		assertEquals(5, list.size());
+		assertEquals("apple", list.get(0));
+		assertEquals("pear", list.get(1));
+		assertEquals("banana", list.get(2));
+		assertEquals("cherry", list.get(3));
+		assertEquals("blueberries", list.get(4));
+		
+		list.moveToBack(2);
+		assertEquals(5, list.size());
+		assertEquals("apple", list.get(0));
+		assertEquals("pear", list.get(1));
+		assertEquals("cherry", list.get(2));
+		assertEquals("blueberries", list.get(3));
+		assertEquals("banana", list.get(4));
+		
 	}
 
 	/**
