@@ -65,13 +65,17 @@ class TestPlanManagerTest {
 		
 	}
 
-//	/**
-//	 * Test method for Test method for TestPlanManager.saveTestPlans
-//	 */
-//	@Test
-//	void testSaveTestPlans() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for Test method for TestPlanManager.saveTestPlans
+	 */
+	@Test
+	void testSaveTestPlans() {
+		TestPlanManager manager = new TestPlanManager();
+		manager.loadTestPlans(new File("test-files/test-plans0.txt"));
+		assertTrue(manager.isChanged());
+		manager.saveTestPlans(new File("test-files/actual-written-files1.txt"));
+		assertFalse(manager.isChanged());
+	}
 
 	/**
 	 * Test method for TestPlanManager.isChanged
@@ -165,21 +169,24 @@ class TestPlanManagerTest {
 		assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName());
 	}
 
-//	/**
-//	 * Test method for TestPlanManager.getCurrentTestPlan
-//	 */
-//	@Test
-//	void testGetCurrentTestPlan() {
-//		fail("Not yet implemented");
-//	}
-
-//	/**
-//	 * Test method for TestPlanManager.editTestPlan
-//	 */
-//	@Test
-//	void testEditTestPlan() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for TestPlanManager.editTestPlan
+	 */
+	@Test
+	void testEditTestPlan() {
+		TestPlanManager test = new TestPlanManager();
+		test.addTestPlan("Sample Test Plan1");
+		test.addTestPlan("Sample Test Plan2");
+		test.addTestPlan("Sample Test Plan3");
+		test.addTestPlan("Sample Test Plan4");
+		test.addTestPlan("Sample Test Plan5");
+		assertThrows(IllegalArgumentException.class, () -> test.editTestPlan(null));
+		assertThrows(IllegalArgumentException.class, () -> test.editTestPlan(""));
+		assertThrows(IllegalArgumentException.class, () -> test.editTestPlan("Sample Test Plan1"));
+		assertDoesNotThrow(() -> test.editTestPlan("New Test Plan Name"));
+		assertEquals("New Test Plan Name", test.getCurrentTestPlan().getTestPlanName());
+		
+	}
 
 	/**
 	 * Test method for TestPlanManager.removeTestPlan
@@ -243,13 +250,18 @@ class TestPlanManagerTest {
 				() -> assertEquals("FAIL", testCaseArray[0][2]));	
 	}
 
-//	/**
-//	 * Test method for TestPlanManager.addTestResult
-//	 */
-//	@Test
-//	void testAddTestResult() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for TestPlanManager.addTestResult
+	 */
+	@Test
+	void testAddTestResult() {
+		TestPlanManager manager = new TestPlanManager();
+		manager.addTestPlan("Plan");
+		manager.addTestCase(new TestCase("ID", "Type", "Description", "Expected"));
+		manager.addTestResult(0, true, "Passes");
+		assertEquals("ID", manager.getCurrentTestPlan().getTestCase(0).getTestCaseId());
+		assertEquals("- PASS: Passes\n", manager.getCurrentTestPlan().getTestCase(0).getActualResultsLog());
+	}
 
 	/**
 	 * Test method for TestPlanManager.clearTestPlans
