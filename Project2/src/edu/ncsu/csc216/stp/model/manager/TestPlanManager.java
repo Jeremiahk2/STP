@@ -48,7 +48,15 @@ public class TestPlanManager {
 	 * @param inputFile file to retrieve TestPlans from
 	 */
 	public void loadTestPlans(File inputFile) {
-		testPlans = TestPlanReader.readTestPlansFile(inputFile);
+		ISortedList<TestPlan> loadPlans = TestPlanReader.readTestPlansFile(inputFile);
+		for (int i = 0; i < loadPlans.size(); i++) {
+			try {
+				testPlans.add(loadPlans.get(i));
+			} catch (IllegalArgumentException e) {
+				//skip this element, it's a duplicate!
+			}
+		}
+		setCurrentTestPlan(FailingTestList.FAILING_TEST_LIST_NAME);
 	}
 	 
 	/**

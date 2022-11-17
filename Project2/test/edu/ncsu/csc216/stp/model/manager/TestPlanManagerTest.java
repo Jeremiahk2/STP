@@ -5,6 +5,8 @@ package edu.ncsu.csc216.stp.model.manager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
+
 import org.junit.jupiter.api.Test;
 
 import edu.ncsu.csc216.stp.model.tests.TestCase;
@@ -29,13 +31,27 @@ class TestPlanManagerTest {
 		
 	}
 
-//	/**
-//	 * Test method for TestPlanManager.loadTestPlans
-//	 */
-//	@Test
-//	void testLoadTestPlans() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for TestPlanManager.loadTestPlans
+	 */
+	@Test
+	void testLoadTestPlans() {
+		TestPlanManager manager = new TestPlanManager();
+		manager.addTestPlan("Zebra");
+		manager.addTestPlan("PackScheduler");
+		assertEquals("PackScheduler", manager.getCurrentTestPlan().getTestPlanName());
+		assertDoesNotThrow(() -> manager.loadTestPlans(new File("test-files/test-plans0.txt")));
+		String[] names = manager.getTestPlanNames();
+		assertEquals("Failing Tests", names[0]);
+		assertEquals("PackScheduler", names[1]);
+		assertEquals("WolfScheduler", names[2]);
+		assertEquals("Zebra", names[3]);
+		assertEquals("Failing Tests", manager.getCurrentTestPlan().getTestPlanName());
+		
+		assertEquals(4, names.length);
+		
+		
+	}
 
 //	/**
 //	 * Test method for Test method for TestPlanManager.saveTestPlans
