@@ -124,7 +124,13 @@ public class TestPlanReader {
 			return null;
 		}
 		
-		TestCase newTestCase = new TestCase(testCaseID, testType, testDescription, expectedResults);
+		TestCase newTestCase;
+		try {
+			newTestCase = new TestCase(testCaseID, testType, testDescription, expectedResults);
+		} catch (IllegalArgumentException e) {
+			testProcessor.close();
+			return null;
+		}
 		while (testProcessor.hasNext()) {
 			//Scanner resultReader = new Scanner(testProcessor.next());
 			//
