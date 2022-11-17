@@ -50,6 +50,8 @@ class TestPlanManagerTest {
 		
 		assertEquals(4, names.length);
 		
+		assertEquals(manager.isChanged(), true);
+		
 		
 	}
 

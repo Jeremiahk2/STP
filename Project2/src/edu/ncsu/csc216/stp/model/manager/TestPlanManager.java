@@ -57,6 +57,7 @@ public class TestPlanManager {
 			}
 		}
 		setCurrentTestPlan(FailingTestList.FAILING_TEST_LIST_NAME);
+		isChanged = true;
 	}
 	 
 	/**
