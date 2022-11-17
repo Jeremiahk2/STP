@@ -153,7 +153,7 @@ public class TestPlanManager {
 	 */
 	public void editTestPlan(String testPlanName) {
 		if (FailingTestList.FAILING_TEST_LIST_NAME.equals(currentTestPlan.getTestPlanName())) {
-			throw new IllegalArgumentException("Invalid test plan to edit.");
+			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
 		}
 		if (testPlanName == null || "".equals(testPlanName) || "Failing Tests".equalsIgnoreCase(testPlanName)) {
 			throw new IllegalArgumentException("Invalid test plan to edit.");
