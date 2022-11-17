@@ -139,8 +139,12 @@ public class TestPlanReader {
 			if (bool.equals(TestResult.PASS)) {
 				newTestCase.addTestResult(true, results.substring(7).trim());
 			}
-			else {
+			else if (bool.equals(TestResult.FAIL)){
 				newTestCase.addTestResult(false, results.substring(7).trim());
+			}
+			else {
+				testProcessor.close();
+				return null;
 			}
 			//
 			//newTestCase.addTestResult(resultReader.nextBoolean(), resultReader.next());
