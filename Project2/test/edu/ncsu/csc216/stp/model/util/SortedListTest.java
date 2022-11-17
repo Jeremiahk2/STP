@@ -45,7 +45,7 @@ class SortedListTest {
 		assertEquals("Cannot add null element.", e1.getMessage());
 		
 		Exception e2 = assertThrows(IllegalArgumentException.class, () -> list.add("Apple"));
-		assertEquals("Cannot add duplicate element.", e2.getMessage());
+		assertEquals("Invalid name.", e2.getMessage());
 		
 	}
 
