@@ -37,7 +37,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			throw new NullPointerException("Cannot add null element.");
 		}
 		if (contains(element)) {
-			throw new IllegalArgumentException("Cannot add duplicate element.");
+			throw new IllegalArgumentException("Invalid name.");
 		}
 		if (size() == 0) {
 			front = new ListNode(element, null);
