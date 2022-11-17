@@ -84,7 +84,7 @@ public class TestPlanManager {
 	 * @throws IllegalArgumentException if testPlanName is "Failing Tests" or a duplicate of an existing testPlan (case insensitive for both)
 	 */
 	public void addTestPlan(String testPlanName) {
-		if (testPlanName == null || "".equals(testPlanName)) {
+		if (testPlanName == null || "".equals(testPlanName) || currentTestPlan.getTestPlanName().equalsIgnoreCase(testPlanName)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		TestPlan newTestPlan = new TestPlan(testPlanName);
