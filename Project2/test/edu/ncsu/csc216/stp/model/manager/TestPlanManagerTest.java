@@ -51,6 +51,16 @@ class TestPlanManagerTest {
 		assertEquals(4, names.length);
 		
 		assertTrue(manager.isChanged());
+	}
+	/**
+	 * Test method for TestPlanManager.loadTestPlans specifically testing the Failing tests being updated
+	 */
+	@Test
+	void testLoadTestPlans2() {
+		TestPlanManager manager = new TestPlanManager();
+		manager.loadTestPlans(new File("test-files/test-plans0.txt"));
+		assertEquals("Failing Tests", manager.getCurrentTestPlan().getTestPlanName());
+		assertEquals(3, manager.getCurrentTestPlan().getTestCasesAsArray().length);
 		
 		
 	}

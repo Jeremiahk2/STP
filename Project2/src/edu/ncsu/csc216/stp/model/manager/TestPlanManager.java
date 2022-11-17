@@ -38,7 +38,6 @@ public class TestPlanManager {
 	public TestPlanManager() {
 		this.testPlans = new SortedList<TestPlan>();
 		this.failingTestList = new FailingTestList();
-		getFailingTests();
 		this.currentTestPlan = failingTestList;
 		isChanged = false;
 	}
@@ -58,6 +57,8 @@ public class TestPlanManager {
 		}
 		setCurrentTestPlan(FailingTestList.FAILING_TEST_LIST_NAME);
 		isChanged = true;
+		getFailingTests();
+		
 	}
 	 
 	/**
@@ -108,6 +109,7 @@ public class TestPlanManager {
 	 * Returns the failing tests within the TestPlanManager
 	 */
 	private void getFailingTests() {
+		failingTestList.clearTests();
 		for (int i = 0; i < testPlans.size(); i++) {
 			for (int j = 0; j < testPlans.get(i).getTestCases().size(); j++) {
 				if (!testPlans.get(i).getTestCases().get(j).isTestCasePassing()) {
