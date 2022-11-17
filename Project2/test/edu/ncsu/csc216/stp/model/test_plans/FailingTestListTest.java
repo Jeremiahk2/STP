@@ -28,6 +28,13 @@ class FailingTestListTest {
 		failingCase.addTestResult(false, "Fails");
 		assertThrows(IllegalArgumentException.class, () -> plan.addTestCase(passingCase));
 		assertDoesNotThrow(() -> plan.addTestCase(failingCase));
+		
+		//tests getting the plan for failing cases when added to/not added to the FailingTestList
+		assertEquals(null, failingCase.getTestPlan());
+		TestPlan plan1 = new TestPlan("Plan");
+		plan1.addTestCase(failingCase);
+		assertEquals(plan1, failingCase.getTestPlan());
+		
 	}
 
 	/**
