@@ -5,6 +5,7 @@ package edu.ncsu.csc216.stp.model.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.stp.model.test_plans.AbstractTestPlan;
@@ -81,7 +82,11 @@ public class TestPlanReader {
 		TestPlan newTestPlan = new TestPlan(planName);
 		
 		while (testPlanProcessor.hasNext()) {
-			newTestPlan.addTestCase(processTest(newTestPlan, testPlanProcessor.next()));
+			try {
+				newTestPlan.addTestCase(processTest(newTestPlan, testPlanProcessor.next()));
+			} catch (NullPointerException e) {
+				//skip this test case
+			}
 		}
 		testPlanProcessor.close();
 		return newTestPlan;
@@ -96,11 +101,17 @@ public class TestPlanReader {
 	private static TestCase processTest(AbstractTestPlan plan, String caseString) {
 		Scanner testProcessor = new Scanner(caseString);
 		testProcessor.useDelimiter(",");
-		String testCaseID = testProcessor.next().trim();
-		testProcessor.useDelimiter("\n");
-		String testType = testProcessor.next().trim().substring(1);
+		String testCaseID;
+		String testType;
+		try {
+			testCaseID = testProcessor.next().trim();
+			testProcessor.useDelimiter("\n");
+			testType = testProcessor.next().trim().substring(1);
+		} catch (NoSuchElementException e) {
+			testProcessor.close();
+			return null;
+		}
 		testProcessor.useDelimiter("\\r?\\n?[-]");
-		
 		Scanner descriptionProcessor = new Scanner(testProcessor.next());
 		descriptionProcessor.useDelimiter("\\r?\\n?[*]");
 		String testDescription = descriptionProcessor.next().trim();
