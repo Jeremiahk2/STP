@@ -76,6 +76,7 @@ class TestPlanReaderTest {
 		ISortedList<TestPlan> plans = TestPlanReader.readTestPlansFile(new File("test-files/test-plans0.txt"));
 		
 		assertDoesNotThrow(() -> TestPlanReader.readTestPlansFile(new File("test-files/test-plans4.txt")));
+		assertDoesNotThrow(() -> TestPlanReader.readTestPlansFile(new File("test-files/test-plans5.txt")));
 	}
 
 }

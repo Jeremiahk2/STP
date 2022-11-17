@@ -114,8 +114,15 @@ public class TestPlanReader {
 		testProcessor.useDelimiter("\\r?\\n?[-]");
 		Scanner descriptionProcessor = new Scanner(testProcessor.next());
 		descriptionProcessor.useDelimiter("\\r?\\n?[*]");
-		String testDescription = descriptionProcessor.next().trim();
-		String expectedResults = descriptionProcessor.next().trim();
+		String testDescription;
+		String expectedResults;
+		try {
+			testDescription = descriptionProcessor.next().trim();
+			expectedResults = descriptionProcessor.next().trim();
+		} catch (NoSuchElementException e) {
+			testProcessor.close();
+			return null;
+		}
 		
 		TestCase newTestCase = new TestCase(testCaseID, testType, testDescription, expectedResults);
 		while (testProcessor.hasNext()) {
