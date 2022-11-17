@@ -67,6 +67,7 @@ public class TestPlanManager {
 	 */
 	public void saveTestPlans(File outputFile) {
 		TestPlanWriter.writeTestPlanFile(outputFile, testPlans);
+		isChanged = false;
 	}
 	
 	/**
