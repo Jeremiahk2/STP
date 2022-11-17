@@ -42,7 +42,6 @@ public class TestResult {
 			throw new IllegalArgumentException("Invalid test results.");
 		}
 		this.actualResults = actualResults;
-		//When making the exception, it should have the message "Invalid test results."
 	}
 
 	/**

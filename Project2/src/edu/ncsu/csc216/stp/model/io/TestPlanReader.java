@@ -41,7 +41,6 @@ public class TestPlanReader {
 		if (!exists) {
 			throw new IllegalArgumentException("Unable to load file.");
 		}
-		//String contents = file.toString();
 		ISortedList<TestPlan> plans = new SortedList<TestPlan>();
 		
 		Scanner processor;
@@ -74,8 +73,6 @@ public class TestPlanReader {
 	 */
 	private static TestPlan processTestPlan(String testPlan) {
 		Scanner testPlanProcessor = new Scanner(testPlan);
-//		testPlanProcessor.useDelimiter("\n");
-//		String planName = testPlanProcessor.next();
 		String planName = testPlanProcessor.nextLine().substring(1);
 		testPlanProcessor.useDelimiter("\\r?\\n?[#]");
 		
@@ -132,8 +129,6 @@ public class TestPlanReader {
 			return null;
 		}
 		while (testProcessor.hasNext()) {
-			//Scanner resultReader = new Scanner(testProcessor.next());
-			//
 			String results = testProcessor.next();
 			if (results.length() <= 7) {
 				testProcessor.close();
@@ -150,9 +145,6 @@ public class TestPlanReader {
 				testProcessor.close();
 				return null;
 			}
-			//
-			//newTestCase.addTestResult(resultReader.nextBoolean(), resultReader.next());
-			//resultReader.close();
 		}
 		descriptionProcessor.close();
 		testProcessor.close();

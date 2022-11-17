@@ -146,14 +146,6 @@ public class SwapList<E> implements ISwapList<E> {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		E element = list[idx];
-//		if (idx != size() - 1) {
-//			E element = list[idx];
-//			for (int i = idx; i < size() - 1; i++) {
-//				list[idx] = list[idx + 1];
-//				
-//			}
-//			list[size() - 1] = element;
-//		}
 		remove(idx);
 		add(element);
 	}
