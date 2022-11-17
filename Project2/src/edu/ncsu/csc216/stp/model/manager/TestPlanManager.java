@@ -147,10 +147,11 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Allows the user to edit the TestPlan of the given name
-	 * @param testPlanName name of the desired TestPlan to be edited
+	 * Allows the user to edit the TestPlan name to the given name
+	 * @param testPlanName desired name to change the current test plan to
 	 * @throws IllegalArgumentException if currentTestPlan is the FailingTestList, or if testPlanName is null, 
-	 * empty, or equal to "Failing Tests" (case insensitive)
+	 * empty, equal to "Failing Tests" (case insensitive), already the name of the TestPlan, or already the name
+	 * of a TestPlan existing within the testCases list.
 	 */
 	public void editTestPlan(String testPlanName) {
 		if (FailingTestList.FAILING_TEST_LIST_NAME.equals(currentTestPlan.getTestPlanName())) {
@@ -165,6 +166,7 @@ public class TestPlanManager {
 				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
+		currentTestPlan.setTestPlanName(testPlanName);
 	}
 	
 	/**
