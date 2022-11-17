@@ -44,10 +44,16 @@ public class TestPlanReader {
 		ISortedList<TestPlan> plans = new SortedList<TestPlan>();
 		
 		Scanner processor;
+		Scanner headerScanner;
 		try {
 			processor = new Scanner(new FileInputStream(file));
+			headerScanner = new Scanner(new FileInputStream(file));
 		} catch (FileNotFoundException e) {
-			throw new IllegalArgumentException("Unable to load file");
+			throw new IllegalArgumentException("Unable to load file.");
+		}
+		String header = headerScanner.nextLine();
+		if (header.charAt(0) != '!') {
+			throw new IllegalArgumentException("Unable to load file.");
 		}
 		processor.useDelimiter("\\r?\\n?[!]");
 		while (processor.hasNext()) {

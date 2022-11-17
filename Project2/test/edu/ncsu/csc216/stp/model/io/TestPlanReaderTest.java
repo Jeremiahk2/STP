@@ -66,8 +66,13 @@ class TestPlanReaderTest {
 				() -> assertEquals("expected results", plan1.getTestCase(1).getExpectedResults()),
 				() -> assertEquals("- PASS: actual results\n", plan1.getTestCase(1).getActualResultsLog())                  
 				);
-		
-		
+	}
+	/**
+	 * Test method for TestPlanReader.readTestPlansFile
+	 */
+	@Test
+	void testReadInvalidTestPlans() {
+		assertThrows(IllegalArgumentException.class, () -> TestPlanReader.readTestPlansFile(new File("test-files/test-plans3.txt")));
 		
 	}
 
