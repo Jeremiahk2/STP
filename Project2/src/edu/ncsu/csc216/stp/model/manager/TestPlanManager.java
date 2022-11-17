@@ -187,6 +187,9 @@ public class TestPlanManager {
 		if (!currentTestPlan.getTestPlanName().equals(failingTestList.getTestPlanName())) {
 			currentTestPlan.addTestCase(t);
 			isChanged = true;
+			if (!t.isTestCasePassing()) {
+				failingTestList.addTestCase(t);
+			}
 		}
 		
 	}
