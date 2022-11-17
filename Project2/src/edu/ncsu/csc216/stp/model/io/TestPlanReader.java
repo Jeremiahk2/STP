@@ -135,6 +135,10 @@ public class TestPlanReader {
 			//Scanner resultReader = new Scanner(testProcessor.next());
 			//
 			String results = testProcessor.next();
+			if (results.length() <= 7) {
+				testProcessor.close();
+				return null;
+			}
 			String bool = results.substring(1, 5);
 			if (bool.equals(TestResult.PASS)) {
 				newTestCase.addTestResult(true, results.substring(7).trim());
