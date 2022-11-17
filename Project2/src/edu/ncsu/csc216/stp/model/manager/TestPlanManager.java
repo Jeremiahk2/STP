@@ -183,6 +183,9 @@ public class TestPlanManager {
 	 * @param t desired TestCase to be added to the TestPlan
 	 */
 	public void addTestCase(TestCase t) {
+		if (currentTestPlan.getTestPlanName().equals(failingTestList.getTestPlanName())) {
+			throw new IllegalArgumentException("Cannot add test case.");
+		}
 		currentTestPlan.addTestCase(t);
 	}
 	
