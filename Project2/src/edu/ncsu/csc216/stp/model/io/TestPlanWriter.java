@@ -28,6 +28,7 @@ public class TestPlanWriter {
 	 * Writes a list of plans to a File in the format described in the class description.
 	 * @param file a File object that is the File to write to.
 	 * @param plans the list of plans to be written in the file
+	 * @throws IllegalArgumentException if the file is unable to be saved
 	 */
 	public static void writeTestPlanFile(File file, ISortedList<TestPlan> plans) {
 		PrintWriter fileWriter;

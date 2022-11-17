@@ -34,7 +34,7 @@ public class TestPlanReader {
 	 * is thrown
 	 * @param file file to read TestPlan data from the given file
 	 * @return SortedList of TestPlans from the given file
-	 * @throws IllegalArugmentException if the file cannot be loaded
+	 * @throws IllegalArgumentException if the file cannot be loaded
 	 */
 	public static ISortedList<TestPlan> readTestPlansFile(File file) {
 		boolean exists = file.exists();

@@ -62,7 +62,7 @@ public class TestPlanManager {
 	}
 	 
 	/**
-	 * Saves TestPlans to a given file in the proper format
+	 * Saves TestPlans to a given file in the proper format and changes isChanged to false
 	 * @param outputFile file to save TestPlans to
 	 */
 	public void saveTestPlans(File outputFile) {
@@ -207,6 +207,8 @@ public class TestPlanManager {
 	 * @param idx index of the TestCase desired to be updated with the TestResult
 	 * @param passing boolean for whether or not the test is passing
 	 * @param actualResult desired actual result to be added to the TestCase
+	 * @throws IndexOutOfBoundsException if the given index is outside of the allowed range
+	 * @throws IllegalArgumentException if the actualResults parameter is null or empty
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
 		if (idx < 0 || idx >= currentTestPlan.getTestCases().size()) {

@@ -24,6 +24,7 @@ public class FailingTestList extends AbstractTestPlan {
 	 * Adds a TestCase to the FailingTestList
 	 * 
 	 * @param t TestCase to be added to the list
+	 * @throws IllegalArgumentException if the TestCase is null or if the TestCase to be added is passing
 	 */
 	@Override
 	public void addTestCase(TestCase t) {

@@ -130,8 +130,6 @@ public class TestCase {
 	public void addTestResult(boolean passing, String actualResults) {
 		TestResult newTestResult = new TestResult(passing, actualResults);
 		testResults.add(newTestResult);
-
-
 	}
 
 	/**
