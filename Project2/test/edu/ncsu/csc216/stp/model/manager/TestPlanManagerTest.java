@@ -24,7 +24,7 @@ class TestPlanManagerTest {
 	void testTestPlanManager() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		
 	}
@@ -52,7 +52,7 @@ class TestPlanManagerTest {
 	void testIsChanged() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		
 		assertFalse(test.isChanged());
@@ -65,12 +65,12 @@ class TestPlanManagerTest {
 	void testAddTestPlan() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		
 		test.addTestPlan("Sample Test Plan");
 		assertAll("TestPlanManager",
-				() -> assertEquals(1, test.getTestPlanNames().length),
+				() -> assertEquals(2, test.getTestPlanNames().length),
 				() -> assertEquals("Sample Test Plan", test.getCurrentTestPlan().getTestPlanName())
 				);
 		
@@ -83,7 +83,7 @@ class TestPlanManagerTest {
 	void testGetTestPlanNames() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		test.addTestPlan("Sample Test Plan1");
 		test.addTestPlan("Sample Test Plan2");
@@ -93,11 +93,13 @@ class TestPlanManagerTest {
 		String[] testPlanNames = test.getTestPlanNames();
 		
 		assertAll("TestPlanNames",
-				() -> assertEquals("Sample Test Plan1", testPlanNames[0]),
-				() -> assertEquals("Sample Test Plan2", testPlanNames[1]),
-				() -> assertEquals("Sample Test Plan3", testPlanNames[2]),
-				() -> assertEquals("Sample Test Plan4", testPlanNames[3]),
-				() -> assertEquals("Sample Test Plan5", testPlanNames[4]));
+				() -> assertEquals(6, testPlanNames.length),
+				() -> assertEquals("Failing Tests", testPlanNames[0]),
+				() -> assertEquals("Sample Test Plan1", testPlanNames[1]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames[2]),
+				() -> assertEquals("Sample Test Plan3", testPlanNames[3]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames[4]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames[5]));
 		
 	}
 
@@ -108,7 +110,7 @@ class TestPlanManagerTest {
 	void testSetCurrentTestPlan() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		test.addTestPlan("Sample Test Plan1");
 		test.addTestPlan("Sample Test Plan2");
@@ -158,7 +160,7 @@ class TestPlanManagerTest {
 	void testRemoveTestPlan() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		test.addTestPlan("Sample Test Plan1");
 		test.addTestPlan("Sample Test Plan2");
@@ -168,21 +170,23 @@ class TestPlanManagerTest {
 		String[] testPlanNames = test.getTestPlanNames();
 		
 		assertAll("TestPlanNames",
-				() -> assertEquals("Sample Test Plan1", testPlanNames[0]),
-				() -> assertEquals("Sample Test Plan2", testPlanNames[1]),
-				() -> assertEquals("Sample Test Plan3", testPlanNames[2]),
-				() -> assertEquals("Sample Test Plan4", testPlanNames[3]),
-				() -> assertEquals("Sample Test Plan5", testPlanNames[4]));
+				() -> assertEquals("Failing Tests", testPlanNames[0]),
+				() -> assertEquals("Sample Test Plan1", testPlanNames[1]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames[2]),
+				() -> assertEquals("Sample Test Plan3", testPlanNames[3]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames[4]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames[5]));
 		
 		test.setCurrentTestPlan("Sample Test Plan3");
 		test.removeTestPlan();
 		String[] testPlanNames2 = test.getTestPlanNames();
 		assertAll("TestPlanNames",
-				() -> assertEquals(4, testPlanNames2.length),
-				() -> assertEquals("Sample Test Plan1", testPlanNames2[0]),
-				() -> assertEquals("Sample Test Plan2", testPlanNames2[1]),
-				() -> assertEquals("Sample Test Plan4", testPlanNames2[2]),
-				() -> assertEquals("Sample Test Plan5", testPlanNames2[3]));
+				() -> assertEquals(5, testPlanNames2.length),
+				() -> assertEquals("Failing Tests", testPlanNames[0]),
+				() -> assertEquals("Sample Test Plan1", testPlanNames2[1]),
+				() -> assertEquals("Sample Test Plan2", testPlanNames2[2]),
+				() -> assertEquals("Sample Test Plan4", testPlanNames2[3]),
+				() -> assertEquals("Sample Test Plan5", testPlanNames2[4]));
 		
 		test.setCurrentTestPlan("Failing Tests");
 		Exception e1 = assertThrows(IllegalArgumentException.class, () -> test.removeTestPlan());
@@ -196,7 +200,7 @@ class TestPlanManagerTest {
 	void testAddTestCase() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		test.addTestPlan("Sample Test Plan1");
 		
@@ -226,7 +230,7 @@ class TestPlanManagerTest {
 	void testClearTestPlans() {
 		TestPlanManager test = new TestPlanManager();
 		assertAll("TestPlanManager",
-				() -> assertEquals(0, test.getTestPlanNames().length),
+				() -> assertEquals(1, test.getTestPlanNames().length),
 				() -> assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName()));
 		test.addTestPlan("Sample Test Plan1");
 		test.addTestPlan("Sample Test Plan2");
@@ -234,10 +238,11 @@ class TestPlanManagerTest {
 		test.addTestPlan("Sample Test Plan4");
 		test.addTestPlan("Sample Test Plan5");
 		String[] testPlanNames = test.getTestPlanNames();
-		assertEquals(5, testPlanNames.length);
+		assertEquals(6, testPlanNames.length);
 		test.clearTestPlans();
 		String[] testPlanNames2 = test.getTestPlanNames();
-		assertEquals(0, testPlanNames2.length);
+		assertEquals(1, testPlanNames2.length);
+		assertEquals("Failing Tests", test.getCurrentTestPlan().getTestPlanName());
 	}
 
 }

@@ -87,9 +87,10 @@ public class TestPlanManager {
 	 * @return String array of TestPlan names
 	 */
 	public String[] getTestPlanNames() {
-		String[] names = new String[testPlans.size()];
-		for (int i = 0; i < testPlans.size(); i++) {
-			names[i] = testPlans.get(i).getTestPlanName();
+		String[] names = new String[testPlans.size() + 1];
+		names[0] = FailingTestList.FAILING_TEST_LIST_NAME;
+		for (int i = 1; i < testPlans.size() + 1; i++) {
+			names[i] = testPlans.get(i - 1).getTestPlanName();
 		}
 		return names;
 	}
