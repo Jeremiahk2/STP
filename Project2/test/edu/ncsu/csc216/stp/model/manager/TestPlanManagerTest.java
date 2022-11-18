@@ -51,6 +51,8 @@ class TestPlanManagerTest {
 		assertEquals(4, names.length);
 		
 		assertTrue(manager.isChanged());
+		
+		//contents of plans should be ensured by TestPlanReader tests
 	}
 	/**
 	 * Test method for TestPlanManager.loadTestPlans specifically testing the Failing tests being updated
@@ -62,11 +64,10 @@ class TestPlanManagerTest {
 		assertEquals("Failing Tests", manager.getCurrentTestPlan().getTestPlanName());
 		assertEquals(3, manager.getCurrentTestPlan().getTestCasesAsArray().length);
 		
-		
 	}
 
 	/**
-	 * Test method for Test method for TestPlanManager.saveTestPlans
+	 * Test method for Test method for TestPlanManager.saveTestPlans. Specifically tests that isChanged is changed after save operations
 	 */
 	@Test
 	void testSaveTestPlans() {
@@ -75,6 +76,7 @@ class TestPlanManagerTest {
 		assertTrue(manager.isChanged());
 		manager.saveTestPlans(new File("test-files/actual-written-files1.txt"));
 		assertFalse(manager.isChanged());
+		//contents of files should be ensured by TestPlanWriter tests
 	}
 
 	/**

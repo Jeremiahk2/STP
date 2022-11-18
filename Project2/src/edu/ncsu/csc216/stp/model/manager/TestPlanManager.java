@@ -15,8 +15,8 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
 import edu.ncsu.csc216.stp.model.util.SortedList;
 
 /**
- * Contains a list of TestPlans, the FailingTestList, and the operations needed to manipulate
- * these lists.
+ * TestPlanManager contains a list of TestPlans, the FailingTestList, and the operations needed to manipulate
+ * these lists as well as the test cases and test results contained in them.
  * @author Ryan McPhee
  * @author Jeremiah Knizley
  */
@@ -107,7 +107,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Returns the failing tests within the TestPlanManager
+	 * Clears the FailingTestList of all of it's test cases, then checks every single test plan for failing tests, and adds them to the FailingTestList
 	 */
 	private void getFailingTests() {
 		failingTestList.clearTests();
@@ -139,22 +139,22 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Returns the currentTestPlan as an AbstractTestPlan
-	 * @return AbstractTestPlan of the currentTestPlan
+	 * Returns the currentTestPlan
+	 * @return the current test plan
 	 */
 	public AbstractTestPlan getCurrentTestPlan() {
 		return currentTestPlan;
 	}
 	
 	/**
-	 * Allows the user to edit the TestPlan name to the given name
+	 * Allows the user to edit the current TestPlan name to the given name
 	 * @param testPlanName desired name to change the current test plan to
 	 * @throws IllegalArgumentException if currentTestPlan is the FailingTestList, or if testPlanName is null, 
 	 * empty, equal to "Failing Tests" (case insensitive), already the name of the TestPlan, or already the name
 	 * of a TestPlan existing within the testCases list.
 	 */
 	public void editTestPlan(String testPlanName) {
-		if (FailingTestList.FAILING_TEST_LIST_NAME.equals(currentTestPlan.getTestPlanName())) {
+		if (FailingTestList.FAILING_TEST_LIST_NAME.equalsIgnoreCase(currentTestPlan.getTestPlanName())) {
 			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
 		}
 		if (testPlanName == null || "".equals(testPlanName) || "Failing Tests".equalsIgnoreCase(testPlanName) || 
@@ -170,7 +170,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Removes TestPlan from the TestPlanManager
+	 * Removes the current test plan from the manager. Afterwards, the FailingTestList will be the current test plan
 	 * @throws IllegalArgumentException if the currentTestPlan is the FailingTestList
 	 */
 	public void removeTestPlan() {
@@ -188,7 +188,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Adds a TestCase to a TestPlan
+	 * Adds a TestCase to the current test plan
 	 * @param t desired TestCase to be added to the TestPlan
 	 */
 	public void addTestCase(TestCase t) {
@@ -203,7 +203,7 @@ public class TestPlanManager {
 	}
 	
 	/**
-	 * Adds TestResult to a TestCase at a given index
+	 * Adds TestResult to a TestCase at a given index in the current test plan
 	 * @param idx index of the TestCase desired to be updated with the TestResult
 	 * @param passing boolean for whether or not the test is passing
 	 * @param actualResult desired actual result to be added to the TestCase

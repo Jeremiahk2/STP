@@ -11,7 +11,7 @@ import edu.ncsu.csc216.stp.model.util.SwapList;
 
 /**
  * Abstract class for different kinds of TestPlans.
- * Main functionality is in managing it's list of TestCases, as well as providing access
+ * AbstractTestPlan's main functionality is in managing it's list of TestCases, as well as providing access
  * to the TestCase's methods. Maintains a name for comparison to other classes that extend this one.
  * @author Jeremiah Knizley
  * @author Ryan McPhee
@@ -122,8 +122,8 @@ public abstract class AbstractTestPlan {
 	}
 	
 	/**
-	 * Returns SwapList of TestCases within a TestPlan
-	 * @return SwapList of TestCases within a TestPlan
+	 * Returns SwapList of TestCases within the AbstractTestPlan
+	 * @return SwapList of TestCases within the AbstractTestPlan
 	 */
 	public ISwapList<TestCase> getTestCases() {
 		return testCases;
@@ -138,6 +138,7 @@ public abstract class AbstractTestPlan {
 	/**
 	 * Overrides equals to make it compare testPlanName only.
 	 * testPlanNames are compared case-sensitively.
+	 * @return boolean true if the objects are equal, false if not
 	 */
 	@Override
 	public boolean equals(Object obj) {

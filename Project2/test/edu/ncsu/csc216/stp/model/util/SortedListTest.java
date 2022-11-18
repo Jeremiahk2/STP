@@ -60,7 +60,7 @@ class SortedListTest {
 		list.add("Apple");
 		list.add("Mango");
 		list.add("Orange");
-		//Genric tests for remove operations, checking contents each time.
+		//Generic tests for remove operations, checking contents each time.
 		assertEquals("Banana", list.remove(1));
 		assertEquals(4, list.size());
 		assertEquals("Apple", list.get(0));

@@ -10,7 +10,7 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
  */
 public class FailingTestList extends AbstractTestPlan {
 
-	/** Constant for the name of the FailingTestList name */
+	/** Constant for the name of the FailingTestList plan name */
 	public static final String FAILING_TEST_LIST_NAME = "Failing Tests";
 	
 	/**
@@ -54,7 +54,7 @@ public class FailingTestList extends AbstractTestPlan {
 	/**
 	 * Returns a two dimensional String array of the TestCases within the FailingTestList. First column
 	 * contains the test case id, the second column is the test type, and the third column is the test plan
-	 * name associated with the TestCase
+	 * name associated with the TestCase. If the test case does not have a test plan associated with it, an empty string is put in that slot in the array
 	 * 
 	 * @return 2D String array containing the TestCase's id, type, and associated TestPlan name
 	 */

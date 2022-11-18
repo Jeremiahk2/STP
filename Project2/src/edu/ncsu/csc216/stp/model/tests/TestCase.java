@@ -11,22 +11,23 @@ import edu.ncsu.csc216.stp.model.util.Log;
  * Class that contains the information about each individual test case including the testCaseId,
  * testType, testDescription, expectedResults, and Ilog of TestResults
  * @author Ryan McPhee
+ * @author Jeremiah Knizley
  *
  */
 public class TestCase {
 
 
-	/** testCaseId for the TestCase */
+	/** the ID of the test case */
 	private String testCaseId;
-	/** testType for the TestCase */
+	/** the type of test case */
 	private String testType;
-	/** testDescription for the TestCase */
+	/** the description of the test case */
 	private String testDescription;
-	/** exceptedResults for the TestCase */
+	/** the expected results of the test case */
 	private String expectedResults;
-	/** testPlan for the TestCase */
+	/** the test plan that this test case is apart of */
 	private TestPlan testPlan;
-	/** a log of testResults for this test case */
+	/** a log of actual testResults for this test case */
 	private ILog<TestResult> testResults;
 
 	/**
@@ -147,6 +148,9 @@ public class TestCase {
 	/**
 	 * Returns a string representation of the testResults log. 
 	 * Format is as follows: A "-" character followed by a space, then the TestResult.toString() method, followed by a new line.
+	 * Should look like this:
+	 * - PASS: Actual results 1
+	 * - FAIL: Actual results 2
 	 * This pattern continues for every result in the log.
 	 * @return String actualResults Log as a string
 	 */
@@ -200,7 +204,12 @@ public class TestCase {
 	}
 
 	/**
-	 * returns a string representation of the TestCase, specifically for printing to a file.
+	 * returns a string representation of the TestCase, designed specifically for printing to a file. The format is as follows:
+	 * "# testCaseId, testType
+	 * * description
+	 * * expectedResults
+	 * - PASS actual results
+	 * 
 	 * @return String the string representation of the TestCase
 	 */
 	public String toString() {

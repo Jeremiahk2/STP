@@ -23,7 +23,7 @@ class TestPlanTest {
 	void testAddTestCase() {
 		TestPlan plan = new TestPlan("Plan");
 		assertThrows(NullPointerException.class, () -> plan.addTestCase(null));
-		plan.addTestCase(new TestCase("ID1", "Type1", "Description1", "Expected1"));
+		assertDoesNotThrow(() -> plan.addTestCase(new TestCase("ID1", "Type1", "Description1", "Expected1")));
 		assertEquals(plan, plan.getTestCase(0).getTestPlan());
 	}
 
@@ -39,6 +39,7 @@ class TestPlanTest {
 		plan.addTestCase(new TestCase("ID4", "Type4", "Description4", "Expected4"));
 		plan.getTestCase(1).addTestResult(true, "Passed");
 		plan.getTestCase(2).addTestResult(true, "Passed");
+		assertDoesNotThrow(() -> plan.getTestCasesAsArray());
 		String[][] cases = plan.getTestCasesAsArray();
 		assertEquals(4, cases.length);
 		

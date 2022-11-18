@@ -17,7 +17,7 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	/**
 	 * Constructor for TestPlan. Creates a TestPlan with the given name using the superclass.
 	 * @param testPlanName the name of the test plan
-	 * @throws IllegalArgumentException if testPlanName is the same as FailingListTest.FAILING_TEST_LIST_NAME.
+	 * @throws IllegalArgumentException if testPlanName is the same as FailingListTest.FAILING_TEST_LIST_NAME (case insensitive)
 	 */
 	public TestPlan(String testPlanName) {
 		super(testPlanName);
@@ -63,7 +63,7 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	/**
 	 * Compares the names of two TestPlans, the comparison is case insensitive.
 	 * @param s the TestPlan to be compared to
-	 * @return int depending on the comparison. If this TestPlan is less than (Alphabetically) then TestPlan s, a -1 is returned. If they are equal, 0. If this TestPlan is greater, a 1 is returned.
+	 * @return int depending on the comparison. If this TestPlan is less than (Alphabetically, for example a is less than b) then TestPlan s, a -1 is returned. If they are equal, 0. If this TestPlan is greater, a 1 is returned.
 	 */
 	@Override
 	public int compareTo(TestPlan s) {
